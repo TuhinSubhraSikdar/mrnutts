@@ -1,37 +1,31 @@
 {% style %}
 .rotating-logos-{{ section.id }} {
   padding: 60px 20px;
-  text-align: center;
+  background: {{ section.settings.section_bg }};
   overflow: hidden;
+}
+
+.rotating-logos-{{ section.id }} .logos-track {
+  display: flex;
+  width: max-content;
+  animation: slideLogos {{ section.settings.rotate_duration }}s linear infinite;
 }
 
 .rotating-logos-{{ section.id }} .logos-wrapper {
   display: flex;
-  justify-content: center;
   gap: 40px;
-  flex-wrap: wrap;
 }
 
-/* Outer card */
+/* Logo card */
 .rotating-logos-{{ section.id }} .logo-item {
-  width: 140px;
-  height: 140px;
+  width: {{ section.settings.logo_width }}px;
+  height: {{ section.settings.logo_height }}px;
   border-radius: 16px;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-/* Inner rotating layer */
-.rotating-logos-{{ section.id }} .logo-rotator {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: rotateLogo {{ section.settings.rotate_duration }}s linear infinite;
 }
 
 .rotating-logos-{{ section.id }} img {
@@ -45,30 +39,32 @@
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
-.rotating-logos-{{ section.id }} .logo-item:hover .logo-rotator {
+/* Pause slider on hover */
+.rotating-logos-{{ section.id }}:hover .logos-track {
   animation-play-state: paused;
 }
 
-@keyframes rotateLogo {
+@keyframes slideLogos {
   from {
-    transform: rotate(0deg);
+    transform: translateX(0);
   }
   to {
-    transform: rotate(360deg);
+    transform: translateX(-50%);
   }
 }
 {% endstyle %}
 
 <div class="rotating-logos-{{ section.id }}">
-  <div class="logos-wrapper">
-    {% for block in section.blocks %}
-      <a
-        href="{{ block.settings.logo_link }}"
-        class="logo-item"
-        target="_blank"
-        {{ block.shopify_attributes }}
-      >
-        <div class="logo-rotator">
+  <div class="logos-track">
+    <!-- First set -->
+    <div class="logos-wrapper">
+      {% for block in section.blocks %}
+        <a
+          href="{{ block.settings.logo_link }}"
+          class="logo-item"
+          target="_blank"
+          {{ block.shopify_attributes }}
+        >
           {% if block.settings.logo_image != blank %}
             <img
               src="{{ block.settings.logo_image | image_url: width: 300 }}"
@@ -76,24 +72,67 @@
               loading="lazy"
             >
           {% endif %}
-        </div>
-      </a>
-    {% endfor %}
+        </a>
+      {% endfor %}
+    </div>
+
+    <!-- Duplicate set for seamless loop -->
+    <div class="logos-wrapper">
+      {% for block in section.blocks %}
+        <a
+          href="{{ block.settings.logo_link }}"
+          class="logo-item"
+          target="_blank"
+        >
+          {% if block.settings.logo_image != blank %}
+            <img
+              src="{{ block.settings.logo_image | image_url: width: 300 }}"
+              alt="Marketplace Logo"
+              loading="lazy"
+            >
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "TSS – Rotating Logos",
+  "name": "TSS Rotating Logos",
   "settings": [
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background Color",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Width (px)",
+      "min": 80,
+      "max": 220,
+      "step": 10,
+      "default": 140
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo Height (px)",
+      "min": 80,
+      "max": 220,
+      "step": 10,
+      "default": 140
+    },
     {
       "type": "range",
       "id": "rotate_duration",
-      "label": "Rotate Animation Duration (seconds)",
-      "min": 5,
-      "max": 40,
-      "step": 1,
-      "default": 15
+      "label": "Slider Speed (seconds)",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "default": 30
     }
   ],
   "blocks": [
@@ -117,7 +156,7 @@
   "max_blocks": 10,
   "presets": [
     {
-      "name": "TSS – Rotating Marketplace Logos",
+      "name": "TSS Rotating Logos",
       "blocks": [
         { "type": "logo" },
         { "type": "logo" },
