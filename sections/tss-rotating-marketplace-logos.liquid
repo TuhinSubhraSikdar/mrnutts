@@ -1,0 +1,129 @@
+{% style %}
+.rotating-logos-{{ section.id }} {
+  padding: 60px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.rotating-logos-{{ section.id }} .logos-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Outer card */
+.rotating-logos-{{ section.id }} .logo-item {
+  width: 140px;
+  height: 140px;
+  border-radius: 16px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Inner rotating layer */
+.rotating-logos-{{ section.id }} .logo-rotator {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotateLogo {{ section.settings.rotate_duration }}s linear infinite;
+}
+
+.rotating-logos-{{ section.id }} img {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+/* Hover effect */
+.rotating-logos-{{ section.id }} .logo-item:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.rotating-logos-{{ section.id }} .logo-item:hover .logo-rotator {
+  animation-play-state: paused;
+}
+
+@keyframes rotateLogo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+{% endstyle %}
+
+<div class="rotating-logos-{{ section.id }}">
+  <div class="logos-wrapper">
+    {% for block in section.blocks %}
+      <a
+        href="{{ block.settings.logo_link }}"
+        class="logo-item"
+        target="_blank"
+        {{ block.shopify_attributes }}
+      >
+        <div class="logo-rotator">
+          {% if block.settings.logo_image != blank %}
+            <img
+              src="{{ block.settings.logo_image | image_url: width: 300 }}"
+              alt="Marketplace Logo"
+              loading="lazy"
+            >
+          {% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "TSS – Rotating Logos",
+  "settings": [
+    {
+      "type": "range",
+      "id": "rotate_duration",
+      "label": "Rotate Animation Duration (seconds)",
+      "min": 5,
+      "max": 40,
+      "step": 1,
+      "default": 15
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo Image"
+        },
+        {
+          "type": "url",
+          "id": "logo_link",
+          "label": "Logo Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "TSS – Rotating Marketplace Logos",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

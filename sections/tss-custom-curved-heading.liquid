@@ -1,0 +1,205 @@
+{% style %}
+.tss-custom-heading-{{ section.id }} {
+  padding: {{ section.settings.padding_top }}px {{ section.settings.padding_side }}px {{ section.settings.padding_bottom }}px;
+  text-align: {{ section.settings.text_align }};
+  {% if section.settings.bg_type == 'color' %}
+    background-color: {{ section.settings.bg_color }};
+  {% elsif section.settings.bg_type == 'gradient' %}
+    background: {{ section.settings.bg_gradient }};
+  {% elsif section.settings.bg_type == 'image' %}
+    background-image: url({{ section.settings.bg_image | image_url }});
+    background-size: cover;
+    background-position: center;
+  {% endif %}
+}
+
+.tss-custom-heading-{{ section.id }} h1 {
+  font-size: {{ section.settings.font_size }}px;
+  color: {{ section.settings.text_color }};
+  font-weight: {{ section.settings.font_weight }};
+  letter-spacing: {{ section.settings.letter_spacing }}px;
+}
+
+.tss-curved-text {
+  display: inline-block;
+}
+{% endstyle %}
+
+<div class="tss-custom-heading-{{ section.id }}">
+  {% if section.settings.text_style == 'straight' %}
+    <h1>{{ section.settings.heading_text }}</h1>
+  {% else %}
+    <svg
+      width="100%"
+      height="{{ section.settings.curve_height }}"
+      viewBox="0 0 1000 {{ section.settings.curve_height }}"
+      class="tss-curved-text"
+    >
+      <path
+        id="tssCurvePath{{ section.id }}"
+        d="M 50 {{ section.settings.curve_height | minus: section.settings.curve_depth }}
+           Q 500 {{ section.settings.curve_depth }}
+           950 {{ section.settings.curve_height | minus: section.settings.curve_depth }}"
+        fill="transparent"
+      />
+      <text>
+        <textPath
+          href="#tssCurvePath{{ section.id }}"
+          startOffset="50%"
+          text-anchor="middle"
+          fill="{{ section.settings.text_color }}"
+          font-size="{{ section.settings.font_size }}"
+          font-weight="{{ section.settings.font_weight }}"
+          letter-spacing="{{ section.settings.letter_spacing }}"
+        >
+          {{ section.settings.heading_text }}
+        </textPath>
+      </text>
+    </svg>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "TSS Custom Curved Heading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "CUSTOMER'S FAVOURITE"
+    },
+    {
+      "type": "select",
+      "id": "text_style",
+      "label": "Text Style",
+      "options": [
+        { "value": "straight", "label": "Straight" },
+        { "value": "curved", "label": "Curved" }
+      ],
+      "default": "curved"
+    },
+    {
+      "type": "range",
+      "id": "curve_height",
+      "label": "Curve Height",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "curve_depth",
+      "label": "Curve Depth",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font Size",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "default": 56
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1c6b2a"
+    },
+    {
+      "type": "range",
+      "id": "font_weight",
+      "label": "Font Weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "label": "Letter Spacing",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "bg_type",
+      "label": "Background Type",
+      "options": [
+        { "value": "color", "label": "Solid Color" },
+        { "value": "gradient", "label": "Gradient" },
+        { "value": "image", "label": "Image" }
+      ],
+      "default": "color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f6e6a8"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_gradient",
+      "label": "Background Gradient"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_side",
+      "label": "Side Padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "TSS Custom Curved Heading"
+    }
+  ]
+}
+{% endschema %}

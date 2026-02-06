@@ -1,0 +1,236 @@
+{%- doc -%}
+TSS – Wave Divider Section
+-------------------------
+Customizable wave divider with solid, gradient, or image backgrounds.
+Supports SVG wave styles, height control, flip direction, and pattern overlays.
+Perfect for section separation and premium UI flow.
+{%- enddoc -%}
+
+{% stylesheet %}
+.tss-wave-divider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--tss-bg);
+  min-height: var(--tss-height);
+}
+
+/* BACKGROUND IMAGE */
+.tss-wave-divider.has-image {
+  background-size: cover;
+  background-position: center;
+}
+
+/* PATTERNS */
+.tss-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--tss-pattern-opacity);
+}
+
+.tss-pattern.dots {
+  background-image: radial-gradient(#000 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.tss-pattern.grid {
+  background-image:
+    linear-gradient(#000 1px, transparent 1px),
+    linear-gradient(90deg, #000 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.tss-pattern.diagonal {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #000,
+    #000 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+/* SVG */
+.tss-wave-divider svg {
+  display: block;
+  width: 100%;
+  height: var(--tss-wave-height);
+}
+
+.tss-wave-divider.flip svg {
+  transform: rotate(180deg);
+}
+{% endstylesheet %}
+
+<section
+  class="tss-wave-divider {% if section.settings.flip_wave %}flip{% endif %} {% if section.settings.bg_type == 'image' %}has-image{% endif %}"
+  style="
+    --tss-height: {{ section.settings.section_height }}px;
+    --tss-wave-height: {{ section.settings.wave_height }}px;
+    --tss-pattern-opacity: {{ section.settings.pattern_opacity | divided_by: 100.0 }};
+    {% if section.settings.bg_type == 'solid' %}
+      --tss-bg: {{ section.settings.bg_color }};
+    {% elsif section.settings.bg_type == 'gradient' %}
+      --tss-bg: linear-gradient(
+        {{ section.settings.gradient_direction }},
+        {{ section.settings.gradient_color_1 }},
+        {{ section.settings.gradient_color_2 }}
+      );
+    {% endif %}
+    {% if section.settings.bg_type == 'image' and section.settings.bg_image %}
+      background-image: url({{ section.settings.bg_image | img_url: '2000x' }});
+    {% endif %}
+  "
+>
+  {% if section.settings.pattern != 'none' %}
+    <div class="tss-pattern {{ section.settings.pattern }}"></div>
+  {% endif %}
+
+  <!-- WAVE SVG -->
+  {% case section.settings.wave_style %}
+    {% when 'soft' %}
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path
+          d="M0,64 C240,96 480,32 720,32 960,32 1200,96 1440,64 L1440,0 L0,0 Z"
+          fill="{{ section.settings.wave_color }}"
+        />
+      </svg>
+
+    {% when 'deep' %}
+      <svg viewBox="0 0 1440 160" preserveAspectRatio="none">
+        <path
+          d="M0,80 C180,140 360,20 540,40 720,60 900,140 1080,120 1260,100 1440,40 1440,40 L1440,0 L0,0 Z"
+          fill="{{ section.settings.wave_color }}"
+        />
+      </svg>
+
+    {% when 'smooth' %}
+      <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+        <path
+          d="M0,100 C300,40 600,140 900,80 1200,20 1440,100 1440,100 L1440,0 L0,0 Z"
+          fill="{{ section.settings.wave_color }}"
+        />
+      </svg>
+  {% endcase %}
+</section>
+
+{% schema %}
+{
+  "name": "TSS Wave Divider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "bg_type",
+      "label": "Background Type",
+      "default": "solid",
+      "options": [
+        { "value": "solid", "label": "Solid Color" },
+        { "value": "gradient", "label": "Gradient" },
+        { "value": "image", "label": "Image" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdeee8"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient Color 1",
+      "default": "#fdeee8"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient Color 2",
+      "default": "#fde2a3"
+    },
+    {
+      "type": "select",
+      "id": "gradient_direction",
+      "label": "Gradient Direction",
+      "default": "to right",
+      "options": [
+        { "value": "to right", "label": "Left → Right" },
+        { "value": "to bottom", "label": "Top → Bottom" },
+        { "value": "135deg", "label": "Diagonal" }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section Height (px)",
+      "min": 80,
+      "max": 400,
+      "step": 10,
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "wave_height",
+      "label": "Wave Height (px)",
+      "min": 60,
+      "max": 220,
+      "step": 10,
+      "default": 120
+    },
+    {
+      "type": "color",
+      "id": "wave_color",
+      "label": "Wave Color",
+      "default": "#fde2a3"
+    },
+    {
+      "type": "select",
+      "id": "wave_style",
+      "label": "Wave Style",
+      "default": "soft",
+      "options": [
+        { "value": "soft", "label": "Soft" },
+        { "value": "smooth", "label": "Smooth" },
+        { "value": "deep", "label": "Deep" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_wave",
+      "label": "Flip Wave Direction",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "pattern",
+      "label": "Pattern Overlay",
+      "default": "none",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "dots", "label": "Dots" },
+        { "value": "grid", "label": "Grid" },
+        { "value": "diagonal", "label": "Diagonal Lines" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "pattern_opacity",
+      "label": "Pattern Opacity (%)",
+      "min": 5,
+      "max": 40,
+      "step": 5,
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "TSS – Wave Divider"
+    }
+  ]
+}
+{% endschema %}

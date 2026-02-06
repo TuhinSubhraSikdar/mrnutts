@@ -1,0 +1,206 @@
+{% style %}
+.tss-custom-testimonials {
+  padding: 80px 20px;
+  background: {{ section.settings.section_bg }};
+  overflow: hidden;
+}
+
+/* Heading */
+.tss-custom-testimonials__heading {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.tss-custom-testimonials__subheading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 60px;
+  color: #666;
+  font-size: 18px;
+}
+
+/* Row wrapper */
+.tss-row-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Row */
+.tss-testimonial-row {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: tss-slide-left 35s linear infinite;
+  will-change: transform;
+}
+
+/* Animation */
+@keyframes tss-slide-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Card */
+.tss-testimonial-card {
+  background: {{ section.settings.card_bg }};
+  border-radius: 16px;
+  padding: 28px;
+  width: 360px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+.tss-testimonial-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* Quote */
+.tss-testimonial-quote {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* Author */
+.tss-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tss-testimonial-author img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tss-testimonial-author strong {
+  display: block;
+  font-size: 15px;
+}
+
+.tss-testimonial-author span {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .tss-testimonial-card {
+    width: 300px;
+  }
+}
+{% endstyle %}
+
+<section class="tss-custom-testimonials">
+  <h2 class="tss-custom-testimonials__heading">
+    {{ section.settings.heading }}
+  </h2>
+
+  <p class="tss-custom-testimonials__subheading">
+    {{ section.settings.subheading }}
+  </p>
+
+  <div class="tss-row-wrapper">
+    <div class="tss-testimonial-row">
+      {% for block in section.blocks %}
+        <div class="tss-testimonial-card">
+          <div class="tss-testimonial-quote">
+            “{{ block.settings.review }}”
+          </div>
+
+          <div class="tss-testimonial-author">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 100 }}"
+                alt="{{ block.settings.name }}"
+                loading="lazy"
+              >
+            {% endif %}
+            <div>
+              <strong>{{ block.settings.name }}</strong>
+              <span>{{ block.settings.role }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      {%- comment -%} duplicate blocks for seamless loop {%- endcomment -%}
+      {% for block in section.blocks %}
+        <div class="tss-testimonial-card">
+          <div class="tss-testimonial-quote">
+            “{{ block.settings.review }}”
+          </div>
+
+          <div class="tss-testimonial-author">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 100 }}"
+                alt="{{ block.settings.name }}"
+                loading="lazy"
+              >
+            {% endif %}
+            <div>
+              <strong>{{ block.settings.name }}</strong>
+              <span>{{ block.settings.role }}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "TSS Custom Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Clients Say"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real feedback from brands we’ve helped grow."
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background Color",
+      "default": "#f8f9fb"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Profile Image" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "role", "label": "Role / Company" },
+        { "type": "textarea", "id": "review", "label": "Review Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TSS Animated Testimonials",
+      "category": "Testimonials"
+    }
+  ]
+}
+{% endschema %}
