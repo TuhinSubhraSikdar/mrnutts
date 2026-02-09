@@ -1,5 +1,3 @@
-
-
 {% if section.blocks.size > 1 %}
   <script
     src="{{ 'announcement-bar.js' | asset_url }}"
@@ -8,14 +6,35 @@
   ></script>
 {% endif %}
 
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<!-- Background layer -->
+<div
+  class="section-background color-{{ section.settings.color_scheme }}"
+  style="
+    {% if section.settings.custom_bg_color != blank %}
+      background-color: {{ section.settings.custom_bg_color }};
+    {% endif %}
+  "
+></div>
+
 <aside
   class="announcement-bar spacing-style section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
-  style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;"
+  style="
+    {% render 'spacing-padding', settings: section.settings %};
+    --border-bottom-width: {{ section.settings.divider_width }}px;
+
+    {% if section.settings.custom_bg_color != blank %}
+      --announcement-bg: {{ section.settings.custom_bg_color }};
+    {% endif %}
+
+    {% if section.settings.custom_text_color != blank %}
+      --announcement-text: {{ section.settings.custom_text_color }};
+    {% endif %}
+  "
 >
   {% liquid
     assign autoplay = false
     assign show_arrows = false
+
     if section.blocks.size > 1
       assign autoplay = true
       assign show_arrows = true
@@ -24,8 +43,9 @@
 
   <announcement-bar-component
     class="announcement-bar__slider"
-    {% if autoplay == true %}
-      autoplay="{{ section.settings.speed }}" aria-live="polite"
+    {% if autoplay %}
+      autoplay="{{ section.settings.speed }}"
+      aria-live="polite"
     {% endif %}
   >
     {% if show_arrows %}
@@ -39,101 +59,121 @@
 </aside>
 
 {% stylesheet %}
-  .announcement-bar {
-    border-block-end: var(--border-bottom-width) solid var(--color-border);
-  }
+/* =====================================
+   CUSTOM ANNOUNCEMENT BAR COLORS
+   ===================================== */
 
+.announcement-bar {
+  background-color: var(--announcement-bg, var(--color-background));
+  color: var(--announcement-text, var(--color-foreground));
+}
+
+.announcement-bar a,
+.announcement-bar__text,
+.announcement-bar__slider .slideshow-control {
+  color: var(--announcement-text, var(--color-foreground));
+}
+
+/* =====================================
+   ANNOUNCEMENT BAR BASE STYLES
+   ===================================== */
+
+.announcement-bar {
+  border-block-end: var(--border-bottom-width) solid var(--color-border);
+}
+
+.announcement-bar__slider {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+@media screen and (max-width: 749px) {
   .announcement-bar__slider {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-
-    @media screen and (max-width: 749px) {
-      grid-column: 1 / -1;
-    }
+    grid-column: 1 / -1;
   }
+}
 
-  .announcement-bar__slides {
-    display: grid;
-    grid: [stack] auto / [stack] auto;
-    width: calc(100% - var(--button-size) * 2);
-    max-width: 680px;
-    margin-inline: auto;
-  }
+.announcement-bar__slides {
+  display: grid;
+  grid: [stack] auto / [stack] auto;
+  width: calc(100% - var(--button-size) * 2);
+  max-width: 680px;
+  margin-inline: auto;
+}
 
-  .announcement-bar__slides > * {
-    grid-area: stack;
-  }
+.announcement-bar__slides > * {
+  grid-area: stack;
+}
 
-  .announcement-bar__slide {
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+.announcement-bar__slide {
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
 
-    &[aria-hidden='true'] {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
+.announcement-bar__slide[aria-hidden='true'] {
+  opacity: 0;
+  visibility: hidden;
+}
 
-  .announcement-bar__slider slideshow-arrows {
-    padding: 0;
-    mix-blend-mode: normal;
-  }
+.announcement-bar__slider slideshow-arrows {
+  padding: 0;
+  mix-blend-mode: normal;
+}
 
-  .announcement-bar__slider slideshow-arrows .slideshow-control {
-    color: var(--color-foreground);
-  }
+.announcement-bar__slider .slideshow-control {
+  display: flex;
+  width: var(--button-size);
+  height: var(--button-size);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
 
-  .announcement-bar__slider .slideshow-control {
-    display: flex;
-    padding: 0;
-    width: var(--button-size);
-    height: var(--button-size);
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-    animation: none;
+.announcement-bar__slider .svg-wrapper {
+  width: var(--icon-size-xs);
+  height: var(--icon-size-xs);
+}
 
-    @media screen and (min-width: 750px) {
-      --slideshow-control-offset: calc((var(--button-size) - var(--icon-size-xs)) / 2);
+.announcement-bar__slide {
+  place-content: center;
+}
 
-      .section--page-width &.slideshow-control--previous {
-        transform: translateX(var(--slideshow-control-offset));
-      }
-    }
-  }
+.announcement-bar__text:first-child {
+  margin: 0;
+}
 
-  .announcement-bar__slider .slideshow-control .svg-wrapper {
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
-  }
-
-  .announcement-bar__slide {
-    place-content: center;
-  }
-
-  .announcement-bar__text:first-child {
-    margin: 0;
-  }
-
-  .announcement-bar__link {
-    position: absolute;
-    inset: 0;
-  }
+.announcement-bar__link {
+  position: absolute;
+  inset: 0;
+}
 {% endstylesheet %}
 
 {% schema %}
 {
   "name": "t:names.announcement_bar",
+  "enabled_on": {
+    "groups": ["header"]
+  },
   "blocks": [
     {
       "type": "_announcement"
     }
   ],
-  "enabled_on": {
-    "groups": ["header"]
-  },
   "settings": [
+    {
+      "type": "header",
+      "content": "Custom colors"
+    },
+    {
+      "type": "color",
+      "id": "custom_bg_color",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Text color"
+    },
     {
       "type": "range",
       "id": "speed",
@@ -152,22 +192,16 @@
       "id": "section_width",
       "label": "t:settings.section_width",
       "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
       ],
       "default": "page-width"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
-      "default": "scheme-4",
-      "label": "t:settings.color_scheme"
+      "label": "t:settings.color_scheme",
+      "default": "scheme-4"
     },
     {
       "type": "range",

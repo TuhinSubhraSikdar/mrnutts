@@ -1,0 +1,213 @@
+{% liquid
+  assign h = section.settings.blur_height
+  assign blur = section.settings.blur_strength
+  assign top_color = section.settings.top_color
+  assign bottom_color = section.settings.bottom_color
+  assign glass = section.settings.enable_glass
+  assign pattern = section.settings.pattern
+%}
+
+<div
+  class="tss-blur-wrapper
+    pattern-{{ pattern }}
+    {% if glass %}glass-enabled{% endif %}
+    {% if section.settings.full_width %}full-width{% endif %}
+  "
+style="
+  --tss-blur-height: {{ h }}px;
+  --tss-blur-strength: blur({{ blur }}px);
+  --tss-top-color: {{ top_color }};
+  --tss-bottom-color: {{ bottom_color }};
+"
+data-dynamic-blurtss-bottom-color: {{ bottom_color }};
+  
+>
+  <div class="tss-blur-layer"></div>
+</div>
+
+{% stylesheet %}
+/* =====================================
+   TSS HEADER BOTTOM BLUR (PREMIUM)
+   ===================================== */
+
+.tss-blur-wrapper {
+  position: relative;
+  width: 100%;
+  height: var(--tss-blur-height);
+  overflow: hidden;
+  z-index: 30;
+}
+
+/* Blur + gradient layer */
+.tss-blur-layer {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    var(--tss-top-color) 0%,
+    var(--tss-bottom-color) 100%
+  );
+
+  backdrop-filter: var(--tss-blur-strength);
+  -webkit-backdrop-filter: var(--tss-blur-strength);
+}
+
+/* Glass effect */
+.glass-enabled .tss-blur-layer {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+/* Patterns */
+.pattern-none {}
+
+.pattern-noise .tss-blur-layer {
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--tss-top-color),
+      var(--tss-bottom-color)
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.pattern-lines .tss-blur-layer {
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--tss-top-color),
+      var(--tss-bottom-color)
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.06) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+}
+
+/* Width */
+.full-width {
+  width: 100vw;
+}
+{% endstylesheet %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const blurSection = document.querySelector('[data-dynamic-blur]');
+  if (!blurSection) return;
+
+  /* Try common hero/banner selectors */
+  const heroImg =
+    document.querySelector('.banner img, .hero img, .slideshow img, main img');
+
+  if (!heroImg || !heroImg.complete) return;
+
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = heroImg.naturalWidth;
+  canvas.height = heroImg.naturalHeight;
+
+  try {
+    ctx.drawImage(heroImg, 0, 0);
+  } catch (e) {
+    return; // CORS safety
+  }
+
+  /* Sample pixels from bottom 20% */
+  const sampleHeight = Math.floor(canvas.height * 0.2);
+  const imageData = ctx.getImageData(
+    0,
+    canvas.height - sampleHeight,
+    canvas.width,
+    sampleHeight
+  ).data;
+
+  let r = 0, g = 0, b = 0, count = 0;
+
+  for (let i = 0; i < imageData.length; i += 4) {
+    r += imageData[i];
+    g += imageData[i + 1];
+    b += imageData[i + 2];
+    count++;
+  }
+
+  r = Math.round(r / count);
+  g = Math.round(g / count);
+  b = Math.round(b / count);
+
+  const dynamicColor = `rgb(${r}, ${g}, ${b})`;
+
+  blurSection.style.setProperty('--tss-bottom-color', dynamicColor);
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "TSS Header Blur",
+  "settings": [
+    {
+      "type": "range",
+      "id": "blur_height",
+      "label": "Blur height",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "default": 90,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "blur_strength",
+      "label": "Blur intensity",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "top_color",
+      "label": "Top gradient color",
+      "default": "#f6e9df"
+    },
+    {
+      "type": "color",
+      "id": "bottom_color",
+      "label": "Bottom gradient color",
+      "default": "#0f3d2e"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_glass",
+      "label": "Enable glass effect",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "pattern",
+      "label": "Overlay pattern",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "noise", "label": "Noise" },
+        { "value": "lines", "label": "Lines" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "TSS Header Blur"
+    }
+  ]
+}
+{% endschema %}

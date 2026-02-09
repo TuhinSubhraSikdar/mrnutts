@@ -1,5 +1,3 @@
-
-
 {% liquid
   assign order = 'logo,menu,localization,search,mobile_search,actions'
 
@@ -44,6 +42,7 @@
   endif
 
   capture logo
+
     content_for 'block', type: '_header-logo', id: 'header-logo'
   endcapture
 
@@ -365,6 +364,78 @@
 ></script>
 
 {% stylesheet %}
+/* ===============================
+   ALPINO PILL STYLE MENU (FIXED)
+   =============================== */
+
+/* Base menu link style */
+.menu-list__link {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  color: #0b7a3c; /* Alpino green */
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Spacing between items */
+.menu-list__list {
+  gap: 10px;
+}
+
+/* Caret styling */
+.menu-list__link .icon-caret {
+  margin-left: 6px;
+  transform: scale(0.8);
+}
+
+/* Hover (NON active items only) */
+.menu-list__list-item:not(.menu-list__list-item--active)
+> .menu-list__link:hover {
+  background-color: rgba(11, 122, 60, 0.08);
+  color: #0b7a3c;
+}
+
+/* ===============================
+   ACTIVE STATE (THE REAL FIX)
+   =============================== */
+
+/* Active menu item */
+.menu-list__list-item--active > .menu-list__link,
+.menu-list__list-item.is-active > .menu-list__link,
+.menu-list__link[data-active="true"] {
+  background-color: #2b2b2b; /* dark pill */
+  color: #ffffff;
+}
+
+/* Keep active state even on hover */
+.menu-list__list-item--active > .menu-list__link:hover {
+  background-color: #2b2b2b;
+  color: #ffffff;
+}
+
+/* Parent stays active when child page is active */
+.menu-list__list-item:has(
+  .menu-list__submenu .menu-list__list-item--active
+) > .menu-list__link {
+  background-color: #2b2b2b;
+  color: #ffffff;
+}
+
+/* ===============================
+   MOBILE SAFETY
+   =============================== */
+@media (max-width: 749px) {
+  .menu-list__link {
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+}
+
+/* ===== END ALPINO MENU STYLE ===== */
+
   body {
     --header-height: 60px;
     --header-group-height: var(--header-height);
@@ -1189,3 +1260,4 @@
   "presets": []
 }
 {% endschema %}
+
