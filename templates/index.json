@@ -389,7 +389,7 @@
         "section_max_width": 1200,
         "padding_top": 70,
         "padding_bottom": 70,
-        "circle_scale": 100
+        "circle_scale": 120
       }
     },
     "tss_wave_divider_6WxWGT": {
@@ -397,7 +397,7 @@
       "name": "TSS – Wave Divider",
       "settings": {
         "bg_type": "solid",
-        "bg_color": "#fbe3a1",
+        "bg_color": "#9dfca1",
         "gradient_color_1": "#fdeee8",
         "gradient_color_2": "#fde2a3",
         "gradient_direction": "to right",
@@ -413,41 +413,55 @@
     "tss_shoppable_video_carousel_KJher7": {
       "type": "tss-shoppable-video-carousel",
       "blocks": {
-        "video_reel_pTzfGj": {
-          "type": "video_reel",
+        "reel_7jyzNe": {
+          "type": "reel",
           "settings": {
-            "video": "shopify://files/videos/7186896_Vertical_Video_Vertical_Content_720x1280.mp4",
-            "product": "high-protein-super-rolled-oats-chocolate"
+            "video": "shopify://files/videos/Started in 2025 with belief.Paused, learned, evolved.Back in 2026 with bigger vision & stronger _c2bcbb6a-3562-428b-8843-18f02ecbe295.mp4",
+            "product": ""
           }
         },
-        "video_reel_V46arW": {
-          "type": "video_reel",
+        "reel_DqJTJf": {
+          "type": "reel",
           "settings": {
-            "video": "shopify://files/videos/0_Vertical_Video_Vertical_Content_720x1280.mp4",
-            "product": "oats"
+            "video": "shopify://files/videos/mr.mp4",
+            "product": ""
           }
         },
-        "video_reel_M4HBh8": {
-          "type": "video_reel",
+        "reel_kLhwcg": {
+          "type": "reel",
           "settings": {
-            "video": "shopify://files/videos/7186896_Vertical_Video_Vertical_Content_720x1280.mp4",
-            "product": "oats"
+            "video": "shopify://files/videos/Get ready to go nuts for flavor! 🥜🍪 ‘MR NUTTS’ Peanut Butter Cookie Crunch is the perfect blen.mp4",
+            "product": ""
+          }
+        },
+        "reel_7TTkDh": {
+          "type": "reel",
+          "settings": {
+            "video": "shopify://files/videos/Christmas special 🎄❤️.Peanut butter cake-2 eggs Melted butter 1 cup jaggery 1 cup wheat flour2 .mp4",
+            "product": ""
+          }
+        },
+        "reel_yAFxJr": {
+          "type": "reel",
+          "settings": {
+            "video": "shopify://files/videos/get.mp4",
+            "product": ""
           }
         }
       },
       "block_order": [
-        "video_reel_pTzfGj",
-        "video_reel_V46arW",
-        "video_reel_M4HBh8"
+        "reel_7jyzNe",
+        "reel_DqJTJf",
+        "reel_kLhwcg",
+        "reel_7TTkDh",
+        "reel_yAFxJr"
       ],
       "name": "TSS – Shoppable Video Reels",
       "settings": {
-        "bg_color": "#fbe3a1",
-        "max_width": 900,
+        "bg_color": "#9dfca1",
+        "max_width": 1600,
         "padding_top": 20,
-        "padding_bottom": 20,
-        "video_ratio": "9 / 16",
-        "video_play_mode": "hover"
+        "padding_bottom": 20
       }
     },
     "tss_wave_divider_pcGkkb": {
@@ -455,14 +469,14 @@
       "name": "TSS – Wave Divider",
       "settings": {
         "bg_type": "solid",
-        "bg_color": "#f9de97",
+        "bg_color": "#9dfca1",
         "gradient_color_1": "#bcffd5",
         "gradient_color_2": "#c6d3ff",
         "gradient_direction": "to bottom",
         "section_height": 80,
-        "wave_height": 150,
+        "wave_height": 100,
         "wave_color": "#ffefeb",
-        "wave_style": "deep",
+        "wave_style": "smooth",
         "flip_wave": true,
         "pattern": "none",
         "pattern_opacity": 15
@@ -476,15 +490,15 @@
         "text_style": "curved",
         "curve_height": 100,
         "curve_depth": 0,
-        "font_size": 52,
+        "font_size": 70,
         "text_color": "#1c6b2a",
         "font_weight": 700,
         "letter_spacing": 2,
         "text_align": "center",
         "bg_type": "gradient",
         "bg_color": "#ffefeb",
-        "bg_gradient": "linear-gradient(180deg, rgba(255, 239, 235, 1) 11%, rgba(29, 54, 134, 0.52) 93%)",
-        "padding_top": 100,
+        "bg_gradient": "linear-gradient(180deg, rgba(255, 239, 235, 1) 11%, rgba(154, 204, 252, 1) 93%)",
+        "padding_top": 0,
         "padding_bottom": 50,
         "padding_side": 0
       }
@@ -586,7 +600,7 @@
       "settings": {
         "product": "oats",
         "recommendation_type": "related",
-        "layout_type": "grid",
+        "layout_type": "carousel",
         "carousel_on_mobile": false,
         "max_products": 4,
         "columns": 4,
@@ -597,9 +611,27 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 57,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-842cef9d-b3a0-4b31-9740-3fa0cd770511",
         "padding-block-start": 48,
         "padding-block-end": 100
+      }
+    },
+    "tss_wave_divider_MFww9j": {
+      "type": "tss-wave-divider",
+      "name": "TSS – Wave Divider",
+      "settings": {
+        "bg_type": "solid",
+        "bg_color": "#9dfca1",
+        "gradient_color_1": "#fdeee8",
+        "gradient_color_2": "#fde2a3",
+        "gradient_direction": "to right",
+        "section_height": 80,
+        "wave_height": 130,
+        "wave_color": "#9bccfd",
+        "wave_style": "soft",
+        "flip_wave": false,
+        "pattern": "none",
+        "pattern_opacity": 10
       }
     },
     "section_wjnz4A": {
@@ -609,7 +641,33 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Heading</h2>",
+            "text": "<p>CHOOSE INDIA'S FINEST FUSION OF TASTE AND NUTRITION</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-primary)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_XqPn8W": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>At (MR NUTTS), we believe that peanut butter is more than just a spread—it’s a wholesome, versatile ingredient that can bring joy to your meals, snacks, and even desserts. We’re passionate about crafting peanut butter that’s not only delicious but also healthy and sustainable. </p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -631,29 +689,18 @@
           },
           "blocks": {}
         },
-        "text_XqPn8W": {
-          "type": "text",
-          "name": "t:names.text",
+        "button_nnAbAh": {
+          "type": "button",
+          "name": "t:names.button",
           "settings": {
-            "text": "<p>We make things that work better and last longer. Our products solve real problems with clean design and honest materials.</p>",
+            "label": "Learn More",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
             "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
           },
           "blocks": {}
         },
@@ -684,6 +731,7 @@
       "block_order": [
         "text_iCYtgE",
         "text_XqPn8W",
+        "button_nnAbAh",
         "video_CYbNMD"
       ],
       "name": "t:names.custom_section",
@@ -699,7 +747,7 @@
         "section_width": "page-width",
         "section_height": "small",
         "section_height_custom": 50,
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-4da89963-9934-41cd-a615-5e9858addaa6",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -711,6 +759,68 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "product_hotspots_ATjfd9": {
+      "type": "product-hotspots",
+      "blocks": {
+        "hotspot_product_Wci8j3": {
+          "type": "_hotspot-product",
+          "settings": {
+            "product": "high-protein-dark-chocolate-oats-400",
+            "x-position": 23,
+            "y-position": 40
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "text",
+          "name": "t:names.heading",
+          "static": true,
+          "settings": {
+            "text": "<h2>Shop Now</h2>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h4",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 18,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "hotspot_product_Wci8j3"
+      ],
+      "name": "t:names.product_hotspots",
+      "settings": {
+        "image": "shopify://shop_images/ChatGPT_Image_Feb_11_2026_12_22_17_PM.png",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "section_width": "full-width",
+        "section_height": "auto",
+        "hotspot_color": "#ffffff57",
+        "bullseye_color": "#000000",
+        "color_scheme": "scheme-842cef9d-b3a0-4b31-9740-3fa0cd770511",
+        "product_title_gap": 8,
+        "product_title_preset": "",
+        "product_price_preset": "",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -860,7 +970,7 @@
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
+        "horizontal_alignment": "center",
         "vertical_alignment": "center",
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
@@ -1010,7 +1120,7 @@
       "name": "t:names.marquee_section",
       "settings": {
         "movement_direction": "normal",
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-842cef9d-b3a0-4b31-9740-3fa0cd770511",
         "padding-block-start": 24,
         "padding-block-end": 24,
         "gap_between_elements": 24
@@ -1019,18 +1129,6 @@
     "tss_product_3d_CKdexx": {
       "type": "tss-product-3d",
       "blocks": {
-        "product_YzxE6X": {
-          "type": "product",
-          "settings": {
-            "heading": "MANGO CHILLI",
-            "subheading": "MS. AAMBUSH",
-            "product": "shopify://shop_images/1_1.jpg",
-            "bg": "shopify://shop_images/WhatsApp-Image-2025-10-03-at-11.46.12-AM.jpg",
-            "show_button": true,
-            "button_text": "Buy Now",
-            "button_link": ""
-          }
-        },
         "product_qyarGP": {
           "type": "product",
           "settings": {
@@ -1066,18 +1164,428 @@
             "button_text": "Buy Now",
             "button_link": ""
           }
+        },
+        "product_XN8djR": {
+          "type": "product",
+          "settings": {
+            "heading": "MANGO CHILLI",
+            "subheading": "MS. AAMBUSH",
+            "show_button": true,
+            "button_text": "Buy Now",
+            "button_link": ""
+          }
+        },
+        "product_my9T3R": {
+          "type": "product",
+          "settings": {
+            "heading": "MANGO CHILLI",
+            "subheading": "MS. AAMBUSH",
+            "show_button": true,
+            "button_text": "Buy Now",
+            "button_link": ""
+          }
         }
       },
       "block_order": [
-        "product_YzxE6X",
         "product_qyarGP",
         "product_MjajhL",
-        "product_iQDqFE"
+        "product_iQDqFE",
+        "product_XN8djR",
+        "product_my9T3R"
       ],
       "name": "TSS 3D Product Showcase",
       "settings": {
         "enable_overlay": true,
         "overlay_opacity": 35
+      }
+    },
+    "tss_custom_curved_heading_gkcHhk": {
+      "type": "tss-custom-curved-heading",
+      "name": "TSS Custom Curved Heading",
+      "settings": {
+        "heading_text": "MIND BODY AND SOUL",
+        "text_style": "curved",
+        "curve_height": 120,
+        "curve_depth": 0,
+        "font_size": 80,
+        "text_color": "#1c6b2a",
+        "font_weight": 700,
+        "letter_spacing": 2,
+        "text_align": "center",
+        "bg_type": "color",
+        "bg_color": "#ffefeb",
+        "bg_gradient": "",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "padding_side": 0
+      }
+    },
+    "section_TfHpRK": {
+      "type": "section",
+      "blocks": {
+        "group_zidtQY": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_VbjCpA": {
+              "type": "icon",
+              "name": "t:names.icon",
+              "settings": {
+                "icon": "heart",
+                "width": 26,
+                "link": "",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            },
+            "text_yj4MrC": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Health</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_TGjQmW": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We promote better health by offering products that support your active and balanced lifestyle.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon_VbjCpA",
+            "text_yj4MrC",
+            "text_TGjQmW"
+          ]
+        },
+        "group_8YMzEz": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_qTwgkT": {
+              "type": "icon",
+              "name": "t:names.icon",
+              "settings": {
+                "icon": "lightning_bolt",
+                "width": 24,
+                "link": "",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            },
+            "text_tMQjhF": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Fit Lifestyle</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_3HXB6x": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>MR NUTTS complements a fit lifestyle with clean, wholesome foods that power your workouts and daily routine.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon_qTwgkT",
+            "text_tMQjhF",
+            "text_3HXB6x"
+          ]
+        },
+        "group_WTewL6": {
+          "type": "group",
+          "name": "t:names.column",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-start",
+            "gap": 8,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 10,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "icon_NUjdHC": {
+              "type": "icon",
+              "name": "t:names.icon",
+              "settings": {
+                "icon": "star",
+                "width": 24,
+                "link": "",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            },
+            "text_7c8Waj": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Quality</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "h4",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_PEcr4G": {
+              "type": "text",
+              "name": "t:names.description",
+              "settings": {
+                "text": "<p>We are committed to delivering premium quality in every jar through carefully selected ingredients and small-batch crafting.</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon_NUjdHC",
+            "text_7c8Waj",
+            "text_PEcr4G"
+          ]
+        }
+      },
+      "block_order": [
+        "group_zidtQY",
+        "group_8YMzEz",
+        "group_WTewL6"
+      ],
+      "name": "t:names.multicolumn",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "flex-start",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-3",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 48
       }
     },
     "collection_list_fneKip": {
@@ -1288,8 +1796,8 @@
       "settings": {
         "heading": "What People say about us",
         "subheading": "This is what we got from our reviews",
-        "section_bg": "#8997c0",
-        "card_bg": "#1c6b2aff"
+        "section_bg": "#9accfc",
+        "card_bg": "#9dfca1"
       }
     },
     "section_chwwfF": {
@@ -1624,7 +2132,7 @@
       ],
       "name": "TSS Rotating Logos",
       "settings": {
-        "section_bg": "#8997c0",
+        "section_bg": "#ffefeb",
         "logo_width": 140,
         "logo_height": 140,
         "rotate_duration": 20
@@ -1640,10 +2148,14 @@
     "tss_wave_divider_pcGkkb",
     "tss_custom_curved_heading_pDBqiQ",
     "product_recommendations_rBiHCY",
+    "tss_wave_divider_MFww9j",
     "section_wjnz4A",
+    "product_hotspots_ATjfd9",
     "section_NfBbb3",
     "marquee_BqJPd7",
     "tss_product_3d_CKdexx",
+    "tss_custom_curved_heading_gkcHhk",
+    "section_TfHpRK",
     "collection_list_fneKip",
     "tss_custom_testimonials_YRHw3r",
     "section_chwwfF",

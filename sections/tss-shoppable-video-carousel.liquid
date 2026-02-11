@@ -1,249 +1,188 @@
-{% comment %}  
-TSS – Shoppable Video Reels Section
-----------------------------------
-
-DESCRIPTION
-This section displays Instagram-style shoppable videos (Reels or Landscape)
-with one attached product per video. Each video card shows the product below
-the video and allows customers to add the product directly to cart.
-
-KEY FEATURES
-• One video + one product per block
-• Supports Portrait (9:16) and Landscape (16:9) video ratios
-• Mobile-friendly horizontal carousel
-• Custom mobile navigation buttons
-• Scrollbars fully hidden (clean UI)
-• Product hover reveals Add-to-Cart button
-• AJAX Add-to-Cart (no page reload)
-• Subtle hover animations for premium feel
-• Shopify CLI safe and editor-friendly
-
-SECTION SETTINGS
-• Background Color
-• Section Max Width (px)
-• Padding Top (px)
-• Padding Bottom (px)
-• Video Aspect Ratio (Portrait / Landscape)
-• Video Play Mode:
-  - Normal (manual play with controls)
-  - Play on Hover
-
-BLOCK SETTINGS (per video)
-• Upload Video
-• Select Product (used for image, title, price, and add-to-cart)
-
-UX BEHAVIOR
-• Desktop: horizontal scroll
-• Mobile: swipe carousel + navigation arrows
-• Video hover:
-  - Card lifts
-  - Video slightly zooms
-• Product hover:
-  - Add-to-Cart button appears beside product info
-
-TECHNICAL NOTES
-• Uses CSS aspect-ratio for video sizing
-• Uses fetch('/cart/add.js') for AJAX add to cart
-• No external libraries or apps required
-• All classes are prefixed with `tss-` to avoid conflicts
-
-RECOMMENDED USE CASES
-• Homepage shoppable reels
-• Influencer / UGC video sections
-• Product discovery sections
-• Instagram-style commerce layouts
-
-AUTHOR
-Tuhin Subhra Sikdar (TSS)
-
-LAST UPDATED
-2026
+{% comment %}
+TSS – Horizontal Shoppable Reels
+Instagram Style Carousel
+No controls
+No hover autoplay
+Desktop arrows included
+Updated 2026
 {% endcomment %}
 
-
-
 {% stylesheet %}
-.tss-video-reels {
+.tss-reels {
   background: var(--tss-bg);
   padding: var(--tss-padding-top) 20px var(--tss-padding-bottom);
-  overflow: hidden; /* hide scrollbar container */
+  position: relative;
 }
 
-.tss-video-reels__container {
+.tss-reels__container {
   max-width: var(--tss-max-width);
   margin: 0 auto;
+  position: relative;
 }
 
-.tss-video-reels__track {
+/* TRACK */
+.tss-reels__track {
   display: flex;
-  gap: 24px;
+  gap: 20px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  /* HIDE SCROLLBAR */
+  scroll-behavior: smooth;
   scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
-.tss-video-reels__track::-webkit-scrollbar {
+.tss-reels__track::-webkit-scrollbar {
   display: none;
 }
 
-.tss-video-reel {
-  flex: 0 0 280px;
-  scroll-snap-align: center;
-}
-
 /* CARD */
-.tss-video-card {
-  background: #fff;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.15);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+.tss-reel {
+  flex: 0 0 240px;
+  position: relative;
 }
 
-.tss-video-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+.tss-reel-card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 /* VIDEO */
-.tss-video-wrapper {
-  position: relative;
+.tss-reel-video {
+  aspect-ratio: 9 / 16;
   width: 100%;
-  aspect-ratio: var(--tss-video-ratio);
-  overflow: hidden;
-  background: #000;
 }
 
-.tss-video-wrapper video {
+.tss-reel-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* PRODUCT BAR */
-.tss-video-product {
+/* PRODUCT OVERLAY */
+.tss-reel-product {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px;
-  position: relative;
+  gap: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-.tss-video-product img {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
+.tss-reel-product img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
   object-fit: cover;
 }
 
-.tss-video-product-info {
+.tss-reel-product-info {
   flex: 1;
 }
 
-.tss-video-product-title {
-  font-size: 14px;
+.tss-reel-product-title {
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.2;
 }
 
-.tss-video-product-price {
-  font-size: 13px;
-  color: #555;
+.tss-reel-product-price {
+  font-size: 12px;
+  color: #666;
 }
 
-/* ADD TO CART BUTTON (HIDDEN) */
-.tss-add-to-cart {
-  opacity: 0;
-  transform: translateX(8px);
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-.tss-video-product:hover .tss-add-to-cart {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-.tss-add-to-cart button {
+.tss-reel-add {
   background: #000;
   color: #fff;
   border: none;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 8px;
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
 }
 
-/* MOBILE NAV */
-.tss-video-nav {
-  display: none;
+/* ARROWS */
+.tss-reel-arrow {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.tss-reel-arrow.left {
+  left: -10px;
+}
+
+.tss-reel-arrow.right {
+  right: -10px;
 }
 
 @media (max-width: 768px) {
-  .tss-video-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 18px;
+  .tss-reel {
+    flex: 0 0 200px;
   }
 
-  .tss-video-nav button {
-    background: #fff;
-    border: none;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-    font-size: 18px;
-    cursor: pointer;
+  .tss-reel-arrow {
+    display: none;
   }
 }
 {% endstylesheet %}
 
 <section
-  class="tss-video-reels"
+  class="tss-reels"
   style="
     --tss-bg: {{ section.settings.bg_color }};
     --tss-max-width: {{ section.settings.max_width }}px;
     --tss-padding-top: {{ section.settings.padding_top }}px;
     --tss-padding-bottom: {{ section.settings.padding_bottom }}px;
-    --tss-video-ratio: {{ section.settings.video_ratio }};
   "
 >
-  <div class="tss-video-reels__container">
+  <div class="tss-reels__container">
 
-    <div class="tss-video-reels__track" id="tssTrack-{{ section.id }}">
+    <button class="tss-reel-arrow left">‹</button>
+    <button class="tss-reel-arrow right">›</button>
+
+    <div class="tss-reels__track">
       {% for block in section.blocks %}
         {% if block.settings.video and block.settings.product %}
-          <div class="tss-video-reel" {{ block.shopify_attributes }}>
-            <div class="tss-video-card">
+          <div class="tss-reel" {{ block.shopify_attributes }}>
+            <div class="tss-reel-card">
 
-              <!-- VIDEO -->
-              <div class="tss-video-wrapper">
-                {{ block.settings.video | video_tag: autoplay: false, loop: true, muted: true, controls: true }}
+              <div class="tss-reel-video">
+                {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
               </div>
 
-              <!-- PRODUCT -->
-              <div class="tss-video-product">
+              <div class="tss-reel-product">
                 <img src="{{ block.settings.product.featured_image | img_url: '100x100' }}">
-                <div class="tss-video-product-info">
-                  <div class="tss-video-product-title">
+                
+                <div class="tss-reel-product-info">
+                  <div class="tss-reel-product-title">
                     {{ block.settings.product.title }}
                   </div>
-                  <div class="tss-video-product-price">
+                  <div class="tss-reel-product-price">
                     {{ block.settings.product.price | money }}
                   </div>
                 </div>
 
-                <div class="tss-add-to-cart">
-                  <button data-variant-id="{{ block.settings.product.selected_or_first_available_variant.id }}">
-                    Add
-                  </button>
-                </div>
+                <button 
+                  class="tss-reel-add"
+                  data-variant-id="{{ block.settings.product.selected_or_first_available_variant.id }}">
+                  +
+                </button>
+
               </div>
 
             </div>
@@ -252,52 +191,35 @@ LAST UPDATED
       {% endfor %}
     </div>
 
-    <!-- MOBILE NAV -->
-    <div class="tss-video-nav">
-      <button data-dir="-1">‹</button>
-      <button data-dir="1">›</button>
-    </div>
-
   </div>
 </section>
 
 <script>
+  /* FORCE AUTOPLAY SAFELY */
+section.querySelectorAll('video').forEach(video => {
+  video.muted = true;
+  video.play().catch(() => {});
+});
 (function () {
   const section = document.getElementById('shopify-section-{{ section.id }}');
   if (!section) return;
 
-  const track = section.querySelector('.tss-video-reels__track');
-  const buttons = section.querySelectorAll('.tss-video-nav button');
-  const videos = section.querySelectorAll('video');
+  const track = section.querySelector('.tss-reels__track');
+  const left = section.querySelector('.tss-reel-arrow.left');
+  const right = section.querySelector('.tss-reel-arrow.right');
 
-  /* MOBILE NAV */
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const card = track.querySelector('.tss-video-reel');
-      if (!card) return;
-      track.scrollBy({
-        left: btn.dataset.dir * (card.offsetWidth + 24),
-        behavior: 'smooth'
-      });
-    });
+  /* Arrow Scroll */
+  left.addEventListener('click', () => {
+    track.scrollBy({ left: -300, behavior: 'smooth' });
   });
 
-  /* VIDEO PLAY MODE */
-  const playMode = "{{ section.settings.video_play_mode }}";
-
-  videos.forEach(video => {
-    if (playMode === 'hover') {
-      video.controls = false;
-      video.closest('.tss-video-card')
-        .addEventListener('mouseenter', () => video.play());
-      video.closest('.tss-video-card')
-        .addEventListener('mouseleave', () => video.pause());
-    }
+  right.addEventListener('click', () => {
+    track.scrollBy({ left: 300, behavior: 'smooth' });
   });
 
-  /* ADD TO CART */
+  /* AJAX ADD TO CART */
   section.addEventListener('click', function (e) {
-    const btn = e.target.closest('.tss-add-to-cart button');
+    const btn = e.target.closest('.tss-reel-add');
     if (!btn) return;
 
     fetch('/cart/add.js', {
@@ -309,92 +231,38 @@ LAST UPDATED
       })
     });
   });
+
 })();
 </script>
 
 {% schema %}
 {
-  "name": "TSS Video Reels",
+  "name": "TSS Reels",
   "settings": [
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "max_width",
-      "label": "Section Max Width (px)",
-      "min": 900,
-      "max": 1600,
-      "step": 50,
-      "default": 1200
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top (px)",
-      "min": 20,
-      "max": 150,
-      "step": 5,
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom (px)",
-      "min": 20,
-      "max": 150,
-      "step": 5,
-      "default": 40
-    },
-    {
-      "type": "select",
-      "id": "video_ratio",
-      "label": "Video Aspect Ratio",
-      "default": "9 / 16",
-      "options": [
-        { "value": "9 / 16", "label": "Portrait (Reel)" },
-        { "value": "16 / 9", "label": "Landscape" }
-      ]
-    },
-    {
-      "type": "select",
-      "id": "video_play_mode",
-      "label": "Video Play Mode",
-      "default": "normal",
-      "options": [
-        { "value": "normal", "label": "Normal (Controls)" },
-        { "value": "hover", "label": "Play on Hover" }
-      ]
-    }
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#f3f3f3" },
+    { "type": "range", "id": "max_width", "label": "Section Max Width (px)", "min": 900, "max": 1600, "step": 50, "default": 1400 },
+    { "type": "range", "id": "padding_top", "label": "Padding Top (px)", "min": 20, "max": 150, "step": 5, "default": 60 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom (px)", "min": 20, "max": 150, "step": 5, "default": 60 }
   ],
   "blocks": [
     {
-      "type": "video_reel",
+      "type": "reel",
       "name": "Video + Product",
       "settings": [
-        {
-          "type": "video",
-          "id": "video",
-          "label": "Upload Video"
-        },
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Select Product"
-        }
+        { "type": "video", "id": "video", "label": "Upload Video" },
+        { "type": "product", "id": "product", "label": "Select Product" }
       ]
     }
   ],
   "presets": [
     {
-      "name": "TSS – Shoppable Video Reels",
+      "name": "TSS Reels",
       "blocks": [
-        { "type": "video_reel" },
-        { "type": "video_reel" },
-        { "type": "video_reel" }
+        { "type": "reel" },
+        { "type": "reel" },
+        { "type": "reel" },
+        { "type": "reel" },
+        { "type": "reel" }
       ]
     }
   ]
