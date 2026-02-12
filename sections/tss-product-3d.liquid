@@ -3,7 +3,6 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
-  background: #fdecc2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,16 +19,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity .4s ease;
 }
 
-/* Overlay (SECTION CONTROLLED) */
+/* Overlay */
 .tss-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 }});
   opacity: {% if section.settings.enable_overlay %}1{% else %}0{% endif %};
-  transition: opacity .3s ease;
 }
 
 /* Layout */
@@ -39,12 +38,12 @@
   width: 100%;
   max-width: 1400px;
   display: grid;
-  grid-template-columns: 120px 1fr 120px;
+  grid-template-columns: 120px auto 120px;
   align-items: center;
-  padding: 40px;
+  justify-content: center;
 }
 
-/* Headings */
+/* Titles */
 .tss-title {
   position: absolute;
   inset: 0;
@@ -54,6 +53,8 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 40px;
+  text-align: center;
+  align-items: center;
 }
 
 .tss-title h1 {
@@ -69,6 +70,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
 }
 
 .tss-side img {
@@ -85,16 +87,26 @@
   transform: scale(1.1);
 }
 
-/* Center product */
+/* Center */
 .tss-center {
   text-align: center;
   perspective: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+/* FIXED STRETCH + TRUE CENTER */
 .tss-center img {
-  max-height: 520px;
+  max-width: 100%;
+  max-height: 580px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   transform-style: preserve-3d;
   animation: tssFloat 4s ease-in-out infinite;
+  transition: transform .4s ease;
 }
 
 /* Button */
@@ -114,10 +126,10 @@
   transform: translateY(-3px);
 }
 
-/* Animation */
+/* Balanced 3D Animation */
 @keyframes tssFloat {
-  0%,100% { transform: translateY(0) rotateY(-12deg); }
-  50% { transform: translateY(-18px) rotateY(12deg); }
+  0%,100% { transform: translateY(0) rotateY(0deg); }
+  50% { transform: translateY(-18px) rotateY(8deg); }
 }
 
 /* Mobile */
@@ -133,7 +145,7 @@
   }
 
   .tss-center img {
-    max-height: 320px;
+    max-height: 380px;
   }
 }
 {% endstyle %}
@@ -142,7 +154,12 @@
 
   <!-- Background -->
   <div class="tss-bg">
-    <img src="{{ section.blocks.first.settings.bg | image_url: width: 2400 }}" data-bg>
+    <img 
+      src="{{ section.blocks.first.settings.bg | image_url: width: 2400 }}"
+      data-desktop-bg="{{ section.blocks.first.settings.bg | image_url: width: 2400 }}"
+      data-mobile-bg="{% if section.blocks.first.settings.mobile_bg != blank %}{{ section.blocks.first.settings.mobile_bg | image_url: width: 1200 }}{% endif %}"
+      data-bg
+    >
   </div>
 
   <!-- Titles -->
@@ -159,7 +176,8 @@
         <img
           src="{{ block.settings.product | image_url: width: 300 }}"
           data-product="{{ block.settings.product | image_url: width: 900 }}"
-          data-bg="{{ block.settings.bg | image_url: width: 2400 }}"
+          data-desktop-bg="{{ block.settings.bg | image_url: width: 2400 }}"
+          data-mobile-bg="{% if block.settings.mobile_bg != blank %}{{ block.settings.mobile_bg | image_url: width: 1200 }}{% endif %}"
           data-heading="{{ block.settings.heading | escape }}"
           data-subheading="{{ block.settings.subheading | escape }}"
           data-btn-text="{{ block.settings.button_text | escape }}"
@@ -188,7 +206,8 @@
         <img
           src="{{ block.settings.product | image_url: width: 300 }}"
           data-product="{{ block.settings.product | image_url: width: 900 }}"
-          data-bg="{{ block.settings.bg | image_url: width: 2400 }}"
+          data-desktop-bg="{{ block.settings.bg | image_url: width: 2400 }}"
+          data-mobile-bg="{% if block.settings.mobile_bg != blank %}{{ block.settings.mobile_bg | image_url: width: 1200 }}{% endif %}"
           data-heading="{{ block.settings.heading | escape }}"
           data-subheading="{{ block.settings.subheading | escape }}"
           data-btn-text="{{ block.settings.button_text | escape }}"
@@ -210,10 +229,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const h2 = hero.querySelector('[data-subheading]');
     const btnWrap = hero.querySelector('[data-btn-wrap]');
 
+    function setInitialBg() {
+      const isMobile = window.innerWidth <= 768;
+      const desktopBg = bg.dataset.desktopBg;
+      const mobileBg = bg.dataset.mobileBg;
+      bg.src = isMobile && mobileBg ? mobileBg : desktopBg;
+    }
+
+    setInitialBg();
+    window.addEventListener('resize', setInitialBg);
+
     hero.querySelectorAll('.tss-side img').forEach(img => {
       img.addEventListener('click', () => {
 
-        bg.src = img.dataset.bg;
+        const isMobile = window.innerWidth <= 768;
+        bg.src = isMobile && img.dataset.mobileBg
+          ? img.dataset.mobileBg
+          : img.dataset.desktopBg;
+
         h1.textContent = img.dataset.heading;
         h2.textContent = img.dataset.subheading;
 
@@ -226,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         main.style.transform = 'rotateY(90deg) scale(.85)';
         setTimeout(() => {
           main.src = img.dataset.product;
-          main.style.transform = 'rotateY(-12deg) scale(1)';
+          main.style.transform = 'rotateY(0deg) scale(1)';
         }, 400);
       });
     });
@@ -236,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 {% schema %}
 {
-  "name": "TSS 3D Product Showcase",
+  "name": "TSS 3D Showcase",
   "settings": [
     { "type": "checkbox", "id": "enable_overlay", "label": "Enable Background Overlay", "default": true },
     { "type": "range", "id": "overlay_opacity", "label": "Overlay Opacity", "min": 0, "max": 90, "step": 5, "default": 40 }
@@ -250,6 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { "type": "text", "id": "subheading", "label": "Subheading", "default": "MS. AAMBUSH" },
         { "type": "image_picker", "id": "product", "label": "Product Image" },
         { "type": "image_picker", "id": "bg", "label": "Background Image" },
+        { "type": "image_picker", "id": "mobile_bg", "label": "Mobile Background Image" },
         { "type": "checkbox", "id": "show_button", "label": "Show Buy Now Button", "default": true },
         { "type": "text", "id": "button_text", "label": "Button Text", "default": "Buy Now" },
         { "type": "url", "id": "button_link", "label": "Button Link" }
@@ -257,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ],
   "presets": [
-    { "name": "TSS 3D Product Showcase" }
+    { "name": "TSS 3D Showcase" }
   ]
 }
 {% endschema %}

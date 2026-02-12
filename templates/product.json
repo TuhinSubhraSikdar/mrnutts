@@ -6,8 +6,32 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
+    "tss_live_viewers_tiKYCi": {
+      "type": "tss-live-viewers",
+      "blocks": {
+        "live_viewers_gTjRnF": {
+          "type": "live_viewers",
+          "settings": {
+            "text_after": "people are viewing this right now",
+            "min_number": 1,
+            "max_number": 28,
+            "bg_color": "#a3e635",
+            "text_color": "#1c6b2a",
+            "font_size": 12
+          }
+        }
+      },
+      "block_order": [
+        "live_viewers_gTjRnF"
+      ],
+      "name": "TSS Live Elements",
+      "settings": {
+        "live_color": "#fdede9"
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -24,6 +48,7 @@
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -70,7 +95,6 @@
               "type": "group",
               "name": "Header",
               "settings": {
-                "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -98,6 +122,9 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -130,6 +157,19 @@
                   },
                   "blocks": {}
                 },
+                "review_X4MUt9": {
+                  "type": "review",
+                  "name": "t:names.product_review_stars",
+                  "settings": {
+                    "stars_style": "shaded",
+                    "show_number": true,
+                    "rating_color": "foreground",
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left"
+                  },
+                  "blocks": {}
+                },
                 "price_tVjtKg": {
                   "type": "price",
                   "settings": {
@@ -155,6 +195,7 @@
               },
               "block_order": [
                 "text_xrnftG",
+                "review_X4MUt9",
                 "price_tVjtKg"
               ]
             },
@@ -188,6 +229,7 @@
               "settings": {
                 "stacking": true,
                 "show_pickup_availability": false,
+                "gift_card_form": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -259,9 +301,22 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
-        "color_scheme": "",
+        "enable_sticky_add_to_cart": true,
+        "color_scheme": "scheme-3",
         "padding-block-start": 0,
         "padding-block-end": 0
+      }
+    },
+    "quick_order_list_eGWVjb": {
+      "type": "quick-order-list",
+      "name": "t:names.quick_order_list",
+      "settings": {
+        "variants_per_page": 50,
+        "show_image": false,
+        "show_sku": false,
+        "color_scheme": "scheme-3",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "product_recommendations_qggXJq": {
@@ -389,7 +444,7 @@
       "settings": {
         "product": "{{ closest.product }}",
         "recommendation_type": "related",
-        "layout_type": "grid",
+        "layout_type": "carousel",
         "carousel_on_mobile": false,
         "max_products": 4,
         "columns": 4,
@@ -400,14 +455,16 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 28,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
     }
   },
   "order": [
+    "tss_live_viewers_tiKYCi",
     "main",
+    "quick_order_list_eGWVjb",
     "product_recommendations_qggXJq"
   ]
 }

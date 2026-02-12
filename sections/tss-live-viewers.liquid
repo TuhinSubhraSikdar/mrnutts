@@ -1,0 +1,160 @@
+{% comment %}
+TSS – Live Elements Section
+Live Viewers Block (Fully Fixed)
+Updated 2026
+{% endcomment %}
+
+{% stylesheet %}
+.tss-live-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+}
+
+.tss-live-viewers {
+  padding: 10px 16px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.tss-live-dot {
+  width: 8px;
+  height: 8px;
+  background: #ff3b3b;
+  border-radius: 50%;
+  animation: tss-pulse 1.5s infinite;
+}
+
+@keyframes tss-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+{% endstylesheet %}
+
+<div 
+  class="tss-live-wrapper"
+  style="background-color: {{ section.settings.live_color }};"
+>
+  {% for block in section.blocks %}
+    {% if block.type == 'live_viewers' %}
+      <div 
+        class="tss-live-viewers"
+        style="
+          background-color: {{ block.settings.bg_color }};
+          color: {{ block.settings.text_color }};
+          font-size: {{ block.settings.font_size }}px;
+        "
+        {{ block.shopify_attributes }}
+      >
+        <span class="tss-live-dot"></span>
+        <span>
+          <span id="tss-live-number-{{ block.id }}"></span>
+          {{ block.settings.text_after }}
+        </span>
+      </div>
+
+      <script>
+      (function(){
+        const el = document.getElementById("tss-live-number-{{ block.id }}");
+        if (!el) return;
+
+        const min = {{ block.settings.min_number }};
+        const max = {{ block.settings.max_number }};
+
+        function randomNumber() {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function update() {
+          el.textContent = randomNumber();
+        }
+
+        update();
+        setInterval(update, 5000);
+      })();
+      </script>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "TSS Live Elements",
+  "settings": [
+    {
+      "type": "color",
+      "id": "live_color",
+      "label": "Section Background Color",
+      "default": "#FDEDE9"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "live_viewers",
+      "name": "Live Viewers",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_after",
+          "label": "Text After Number",
+          "default": "people are viewing this right now"
+        },
+        {
+          "type": "range",
+          "id": "min_number",
+          "label": "Minimum Number",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "max_number",
+          "label": "Maximum Number",
+          "min": 20,
+          "max": 120,
+          "step": 1,
+          "default": 35
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Block Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Font Size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "default": 14
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TSS Live Elements",
+      "blocks": [
+        { "type": "live_viewers" }
+      ]
+    }
+  ]
+}
+{% endschema %}
