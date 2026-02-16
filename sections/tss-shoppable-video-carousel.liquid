@@ -1,12 +1,3 @@
-{% comment %}
-TSS – Horizontal Shoppable Reels
-Instagram Style Carousel
-No controls
-No hover autoplay
-Desktop arrows included
-Updated 2026
-{% endcomment %}
-
 {% stylesheet %}
 .tss-reels {
   background: var(--tss-bg);
@@ -15,8 +6,9 @@ Updated 2026
 }
 
 .tss-reels__container {
-  max-width: var(--tss-max-width);
-  margin: 0 auto;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
   position: relative;
 }
 
@@ -35,7 +27,7 @@ Updated 2026
 
 /* CARD */
 .tss-reel {
-  flex: 0 0 240px;
+  flex: 0 0 260px; /* slightly wider looks better on desktop */
   position: relative;
 }
 
@@ -106,6 +98,11 @@ Updated 2026
   cursor: pointer;
 }
 
+.tss-reels__heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* ARROWS */
 .tss-reel-arrow {
   position: absolute;
@@ -130,9 +127,15 @@ Updated 2026
   right: -10px;
 }
 
+/* MOBILE – SHOW 2 REELS */
 @media (max-width: 768px) {
+
+  .tss-reels__track {
+    gap: 14px;
+  }
+
   .tss-reel {
-    flex: 0 0 200px;
+    flex: 0 0 calc(50% - 7px); /* PERFECT 2 reels */
   }
 
   .tss-reel-arrow {
@@ -150,6 +153,13 @@ Updated 2026
     --tss-padding-bottom: {{ section.settings.padding_bottom }}px;
   "
 >
+
+  {% if section.settings.heading != blank %}
+    <h2 class="tss-reels__heading">
+      {{ section.settings.heading }}
+    </h2>
+  {% endif %}
+
   <div class="tss-reels__container">
 
     <button class="tss-reel-arrow left">‹</button>
@@ -193,13 +203,7 @@ Updated 2026
 
   </div>
 </section>
-
 <script>
-  /* FORCE AUTOPLAY SAFELY */
-section.querySelectorAll('video').forEach(video => {
-  video.muted = true;
-  video.play().catch(() => {});
-});
 (function () {
   const section = document.getElementById('shopify-section-{{ section.id }}');
   if (!section) return;
@@ -208,16 +212,35 @@ section.querySelectorAll('video').forEach(video => {
   const left = section.querySelector('.tss-reel-arrow.left');
   const right = section.querySelector('.tss-reel-arrow.right');
 
-  /* Arrow Scroll */
+  /* FORCE AUTOPLAY */
+  section.querySelectorAll('video').forEach(video => {
+    video.muted = true;
+    video.play().catch(() => {});
+  });
+
+  function updateArrows() {
+    if (track.scrollWidth > track.clientWidth) {
+      left.style.display = 'block';
+      right.style.display = 'block';
+      track.style.overflowX = 'auto';
+    } else {
+      left.style.display = 'none';
+      right.style.display = 'none';
+      track.style.overflow = 'hidden';
+    }
+  }
+
+  updateArrows();
+  window.addEventListener('resize', updateArrows);
+
   left.addEventListener('click', () => {
-    track.scrollBy({ left: -300, behavior: 'smooth' });
+    track.scrollBy({ left: -320, behavior: 'smooth' });
   });
 
   right.addEventListener('click', () => {
-    track.scrollBy({ left: 300, behavior: 'smooth' });
+    track.scrollBy({ left: 320, behavior: 'smooth' });
   });
 
-  /* AJAX ADD TO CART */
   section.addEventListener('click', function (e) {
     const btn = e.target.closest('.tss-reel-add');
     if (!btn) return;
@@ -234,11 +257,11 @@ section.querySelectorAll('video').forEach(video => {
 
 })();
 </script>
-
 {% schema %}
 {
   "name": "TSS Reels",
   "settings": [
+    { "type": "text", "id": "heading", "label": "Section Heading", "default": "Shop the Reels" },
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#f3f3f3" },
     { "type": "range", "id": "max_width", "label": "Section Max Width (px)", "min": 900, "max": 1600, "step": 50, "default": 1400 },
     { "type": "range", "id": "padding_top", "label": "Padding Top (px)", "min": 20, "max": 150, "step": 5, "default": 60 },
@@ -258,7 +281,6 @@ section.querySelectorAll('video').forEach(video => {
     {
       "name": "TSS Reels",
       "blocks": [
-        { "type": "reel" },
         { "type": "reel" },
         { "type": "reel" },
         { "type": "reel" },

@@ -575,8 +575,8 @@
                   "name": "t:names.text",
                   "settings": {
                     "text": "<p><a href=\"mailto:contactmrnutts@gmail.com\" target=\"_blank\">contactmrnutts@gmail.com</a></p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
+                    "width": "100%",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-body--family)",
@@ -584,7 +584,7 @@
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
-                    "wrap": "pretty",
+                    "wrap": "nowrap",
                     "color": "var(--color-foreground)",
                     "background": false,
                     "background_color": "#00000026",
@@ -592,7 +592,7 @@
                     "padding-block-start": 0,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "padding-inline-end": 31
                   },
                   "blocks": {}
                 }
@@ -620,7 +620,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 20,
-        "color_scheme": "scheme-4da89963-9934-41cd-a615-5e9858addaa6",
+        "color_scheme": "scheme-d5793959-d158-4867-a75b-5cc271633b2c",
         "padding-block-start": 30,
         "padding-block-end": 30
       }

@@ -1,0 +1,269 @@
+{% schema %}
+{
+  "name": "TSS Product Showcase",
+  "settings": [
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section Height (px)",
+      "min": 400,
+      "max": 1000,
+      "step": 50,
+      "default": 650
+    },
+    {
+      "type": "select",
+      "id": "bg_type",
+      "label": "Background Type",
+      "options": [
+        { "value": "color", "label": "Solid Color" },
+        { "value": "gradient", "label": "Gradient" }
+      ],
+      "default": "color"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#d8cba5"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient Color 1",
+      "default": "#d8cba5"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient Color 2",
+      "default": "#e6e6e6"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "TSS Product Showcase" }
+  ]
+}
+{% endschema %}
+
+<section 
+  class="tss-showcase"
+  style="
+    height: {{ section.settings.section_height }}px;
+    {% if section.settings.bg_type == 'color' %}
+      background: {{ section.settings.bg_color }};
+    {% else %}
+      background: linear-gradient(135deg, {{ section.settings.gradient_color_1 }}, {{ section.settings.gradient_color_2 }});
+    {% endif %}
+  "
+>
+
+  <button class="tss-nav tss-prev">&#10094;</button>
+  <button class="tss-nav tss-next">&#10095;</button>
+
+  <div class="tss-wrapper" id="tssCarousel">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product] %}
+      {% if product %}
+      <div class="tss-card">
+
+        <div class="tss-img">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
+          </a>
+          <div class="tss-heart">♡</div>
+        </div>
+
+        <div class="tss-reviews">
+          ★★★★★ <span>(No reviews)</span>
+        </div>
+
+        <h3 class="tss-title">
+          {{ product.title }}
+        </h3>
+
+        <div class="tss-price">
+          {{ product.price | money }}
+        </div>
+
+        <a href="{{ product.url }}" class="tss-btn">
+          ADD TO CART
+        </a>
+
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</section>
+
+<style>
+.tss-showcase {
+  position: relative;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.tss-wrapper {
+  display: flex;
+  gap: 60px;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.tss-card {
+  flex: 0 0 260px;
+  text-align: center;
+}
+
+.tss-img {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.tss-img img {
+  width: 100%;
+  max-width: 200px;
+  display: block;
+  margin: auto;
+  transition: transform 0.3s ease;
+}
+
+.tss-img img:hover {
+  transform: scale(1.05);
+}
+
+.tss-heart {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.tss-heart.active {
+  color: #ff3b3b;
+  transform: scale(1.3);
+}
+
+.tss-reviews {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.tss-title {
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  min-height: 38px;
+}
+
+.tss-price {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.tss-btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.tss-btn:hover {
+  background: #222;
+}
+
+/* Navigation */
+.tss-nav {
+  position: absolute;
+  top: 40%;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tss-prev {
+  left: 10px;
+}
+
+.tss-next {
+  right: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .tss-wrapper {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .tss-card {
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+  }
+
+  .tss-nav {
+    display: none;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const carousel = document.querySelector(".tss-wrapper");
+  const next = document.querySelector(".tss-next");
+  const prev = document.querySelector(".tss-prev");
+
+  if(next && prev && carousel){
+    next.addEventListener("click", function(){
+      carousel.scrollBy({ left: 300, behavior: "smooth" });
+    });
+
+    prev.addEventListener("click", function(){
+      carousel.scrollBy({ left: -300, behavior: "smooth" });
+    });
+  }
+
+  document.querySelectorAll(".tss-heart").forEach(function(heart){
+    heart.addEventListener("click", function(){
+      heart.classList.toggle("active");
+    });
+  });
+
+});
+</script>
+
+
