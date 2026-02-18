@@ -32,7 +32,7 @@
             "background_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-end": 21,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -76,9 +76,87 @@
         "padding-block-start": 40,
         "padding-block-end": 0
       }
+    },
+    "section_RPciFd": {
+      "type": "section",
+      "blocks": {
+        "custom_liquid_NhAkGH": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "<!-- Bootstrap -->\n<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n\n<!-- Bootstrap Icons -->\n<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css\">\n\n<style>\n\n:root {\n  --primary-green: #0f6b3f;\n  --light-green: #1f8a57;\n  --bg-soft: #ffefeb;\n}\n\nbody {\n  margin: 0;\n  font-family: 'Segoe UI', sans-serif;\n}\n\n.contact-section {\n  background: var(--bg-soft);\n  padding: 80px 20px;\n}\n\n.contact-title {\n  color: var(--primary-green);\n  font-weight: 800;\n  letter-spacing: 1px;\n  margin-bottom: 15px;\n}\n\n.contact-text {\n  font-size: 1.2rem;\n  font-weight: 600;\n  color: var(--primary-green);\n  line-height: 1.8;\n}\n\n.social-icons {\n  margin-top: 25px;\n}\n\n.social-icons a {\n  color: var(--primary-green);\n  font-size: 1.4rem;\n  margin-right: 18px;\n  transition: 0.3s ease;\n  display: inline-block;\n}\n\n.social-icons a:hover {\n  transform: translateY(-5px) scale(1.2);\n  color: var(--light-green);\n}\n\n@media(max-width:768px){\n  .contact-text {\n    font-size: 1rem;\n  }\n}\n\n.contact-link {\n  color: var(--primary-green);\n  text-decoration: none;\n  transition: 0.3s ease;\n}\n\n.contact-link:hover {\n  color: var(--light-green);\n  text-decoration: underline;\n}\n\n\n</style>\n</head>\n\n<body>\n\n<section class=\"contact-section\">\n  <div class=\"container\">\n\n    <!-- Phone -->\n<div class=\"mb-5\">\n  <h5 class=\"contact-title\">PHONE</h5>\n  <div class=\"contact-text\">\n    <a href=\"tel:+918697004276\" class=\"contact-link\">\n      +91 8697004276\n    </a>\n  </div>\n</div>\n\n<!-- Email -->\n<div class=\"mb-5\">\n  <h5 class=\"contact-title\">EMAIL</h5>\n  <div class=\"contact-text\">\n    <a href=\"mailto:contactmrnutts@gmail.com\" class=\"contact-link\">\n      contactmrnutts@gmail.com\n    </a>\n  </div>\n</div>\n\n    <!-- Address -->\n    <div class=\"mb-5\">\n      <h5 class=\"contact-title\">ADDRESS</h5>\n      <div class=\"contact-text\">\n        52 Balaram Dey Street,<br>\n        Kolkata, West Bengal – 700006\n      </div>\n    </div>\n\n    <!-- Social Media -->\n    <div>\n      <h5 class=\"contact-title\">SOCIAL MEDIA</h5>\n      <div class=\"social-icons\">\n        <a href=\"https://www.instagram.com/mrnutts.in/\" target=\"_blank\">\n          <i class=\"bi bi-instagram\"></i>\n        </a>\n        <a href=\"https://www.facebook.com/mrnutts.in/\" target=\"_blank\">\n          <i class=\"bi bi-facebook\"></i>\n        </a>\n      </div>\n    </div>\n\n  </div>\n</section>\n\n</body>"
+          },
+          "blocks": {}
+        },
+        "contact_form_6XaDEi": {
+          "type": "contact-form",
+          "name": "t:names.contact_form",
+          "settings": {
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "submit-button": {
+              "type": "contact-form-submit-button",
+              "static": true,
+              "settings": {
+                "label": "Submit",
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "custom_liquid_NhAkGH",
+        "contact_form_6XaDEi"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-3",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "section_RPciFd"
   ]
 }

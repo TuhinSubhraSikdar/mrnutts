@@ -1,4 +1,6 @@
 {% stylesheet %}
+
+/* ================= SECTION ================= */
 .tss-category-rings {
   background: var(--tss-bg);
   padding: var(--tss-padding-top) 20px var(--tss-padding-bottom);
@@ -13,21 +15,44 @@
   margin-bottom: 60px;
 }
 
+/* ================= CAROUSEL CONTAINER ================= */
 .tss-category-rings__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 50px;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 40px;
   max-width: var(--tss-max-width);
   margin: 0 auto;
+  padding-bottom: 10px;
+
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
+.tss-category-rings__grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* ================= ITEMS ================= */
 .tss-category-rings__item {
+  flex: 0 0 calc((100% - 120px) / 4); /* 4 per row */
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* ===== RING SYSTEM ===== */
+.tss-category-rings__item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================= RING SYSTEM ================= */
 .tss-ring-wrapper {
   position: relative;
   width: calc(190px * var(--tss-scale));
@@ -78,7 +103,7 @@
   border-radius: 50%;
   overflow: hidden;
   background: #fff;
-  z-index: 3; /* IMPORTANT */
+  z-index: 3;
   box-shadow: 0 12px 25px rgba(0,0,0,0.15);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -89,7 +114,7 @@
   object-fit: cover;
 }
 
-/* ===== HOVER ===== */
+/* ================= HOVER ================= */
 .tss-category-rings__item:hover .tss-ring-outer {
   opacity: 1;
   transform: scale(1) rotate(360deg);
@@ -117,7 +142,7 @@
   color: #333;
 }
 
-/* ================= MOBILE (3 PER ROW CLEAN & RESPONSIVE) ================= */
+/* ================= MOBILE (3 PER VIEW SLIDER) ================= */
 @media (max-width: 768px) {
 
   .tss-category-rings {
@@ -125,17 +150,19 @@
     padding-right: 12px;
   }
 
-  .tss-category-rings__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px 16px;
-  }
-
   .tss-category-rings__heading {
     font-size: 24px;
     margin-bottom: 30px;
   }
 
-  /* Make circle responsive to grid column */
+  .tss-category-rings__grid {
+    gap: 22px;
+  }
+
+  .tss-category-rings__item {
+    flex: 0 0 calc((100% - 32px) / 3); /* 3 per view */
+  }
+
   .tss-ring-wrapper {
     width: 100%;
     height: auto;
@@ -167,8 +194,8 @@
     font-size: 13px;
     margin-top: 10px;
   }
-
 }
+
 {% endstylesheet %}
 
 <section

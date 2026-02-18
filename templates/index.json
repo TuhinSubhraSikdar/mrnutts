@@ -348,10 +348,16 @@
     "tss_shop_by_category_rings_3jAtKC": {
       "type": "tss-shop-by-category-rings",
       "blocks": {
-        "category_VqcJKQ": {
+        "category_KnPCQU": {
           "type": "category",
           "settings": {
             "collection": "oats"
+          }
+        },
+        "category_VqcJKQ": {
+          "type": "category",
+          "settings": {
+            "collection": "peanut-butter"
           }
         },
         "category_3kmQcc": {
@@ -363,11 +369,12 @@
         "category_pjhRgX": {
           "type": "category",
           "settings": {
-            "collection": "makhana"
+            "collection": "combos"
           }
         }
       },
       "block_order": [
+        "category_KnPCQU",
         "category_VqcJKQ",
         "category_3kmQcc",
         "category_pjhRgX"
@@ -410,35 +417,35 @@
           "type": "reel",
           "settings": {
             "video": "shopify://files/videos/Started in 2025 with belief.Paused, learned, evolved.Back in 2026 with bigger vision & stronger _c2bcbb6a-3562-428b-8843-18f02ecbe295.mp4",
-            "product": ""
+            "product": "high-protein-dark-chocolate-oats-400"
           }
         },
         "reel_DqJTJf": {
           "type": "reel",
           "settings": {
             "video": "shopify://files/videos/mr.mp4",
-            "product": ""
+            "product": "peanut-butter-natural-crunchy"
           }
         },
         "reel_kLhwcg": {
           "type": "reel",
           "settings": {
             "video": "shopify://files/videos/Get ready to go nuts for flavor! 🥜🍪 ‘MR NUTTS’ Peanut Butter Cookie Crunch is the perfect blen.mp4",
-            "product": ""
+            "product": "peanut-butter-cookie-crunch-500-gm"
           }
         },
         "reel_7TTkDh": {
           "type": "reel",
           "settings": {
             "video": "shopify://files/videos/Christmas special 🎄❤️.Peanut butter cake-2 eggs Melted butter 1 cup jaggery 1 cup wheat flour2 .mp4",
-            "product": ""
+            "product": "peanut-butter-dark-chocolate-crunchy"
           }
         },
         "reel_yAFxJr": {
           "type": "reel",
           "settings": {
             "video": "shopify://files/videos/get.mp4",
-            "product": ""
+            "product": "peanut-butter-dark-chocolate-smooth"
           }
         }
       },
@@ -493,174 +500,84 @@
         "bg_color": "#ffefeb",
         "bg_gradient": "linear-gradient(180deg, rgba(255, 239, 235, 1) 11%, rgba(154, 204, 252, 1) 93%)",
         "padding_top": 0,
-        "padding_bottom": 50,
+        "padding_bottom": 20,
         "padding_side": 0
       }
     },
-    "product_recommendations_rBiHCY": {
-      "type": "product-recommendations",
+    "tss_product_card_GeGpMy": {
+      "type": "tss-product-card",
       "blocks": {
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "product_item_mqWDac": {
+          "type": "product_item",
           "settings": {
-            "product_card_gap": 4,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_NhyVQx": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "review_Gkjd4G": {
-              "type": "review",
-              "name": "t:names.product_review_stars",
-              "settings": {
-                "stars_style": "shaded",
-                "show_number": true,
-                "rating_color": "primary",
-                "type_preset": "paragraph",
-                "width": "100%",
-                "alignment": "left"
-              },
-              "blocks": {}
-            },
-            "product_title_wK3xFq": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_b4FrJR": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "buy_buttons_jCEci3": {
-              "type": "buy-buttons",
-              "name": "t:names.product_buy_buttons",
-              "settings": {
-                "stacking": false,
-                "show_pickup_availability": true,
-                "gift_card_form": true,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "disabled": true,
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                },
-                "add-to-cart": {
-                  "type": "add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "style_class": "button"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "disabled": true,
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                }
-              },
-              "block_order": []
-            }
-          },
-          "block_order": [
-            "product_card_gallery_NhyVQx",
-            "review_Gkjd4G",
-            "product_title_wK3xFq",
-            "price_b4FrJR",
-            "buy_buttons_jCEci3"
-          ]
+            "product": "",
+            "custom_reviews": ""
+          }
+        },
+        "product_item_3dBLig": {
+          "type": "product_item",
+          "settings": {
+            "product": "",
+            "custom_reviews": ""
+          }
+        },
+        "product_item_kze7ff": {
+          "type": "product_item",
+          "settings": {
+            "product": "peanut-butter-dark-chocolate-smooth",
+            "custom_reviews": ""
+          }
+        },
+        "product_item_EiHCEB": {
+          "type": "product_item",
+          "settings": {
+            "product": "peanut-butter-mango-with-chia-seeds",
+            "custom_reviews": "★★★★★ (126 reviews)"
+          }
+        },
+        "product_item_wQqtzz": {
+          "type": "product_item",
+          "settings": {
+            "product": "peanut-butter-natural-crunchy",
+            "custom_reviews": "★★★★★ (16 reviews)"
+          }
+        },
+        "product_item_m4zwW9": {
+          "type": "product_item",
+          "settings": {
+            "product": "peanut-butter-dark-chocolate-crunchy",
+            "custom_reviews": ""
+          }
+        },
+        "product_item_tDFU7k": {
+          "type": "product_item",
+          "settings": {
+            "product": "high-protein-dark-chocolate-oats-400",
+            "custom_reviews": "★★★★★ (2 reviews)"
+          }
+        },
+        "product_item_RWRxrQ": {
+          "type": "product_item",
+          "settings": {
+            "product": "peanut-butter-cookie-crunch-500-gm",
+            "custom_reviews": "★★★★★ (12 reviews)"
+          }
         }
       },
-      "name": "t:names.product_recommendations",
+      "block_order": [
+        "product_item_mqWDac",
+        "product_item_3dBLig",
+        "product_item_kze7ff",
+        "product_item_EiHCEB",
+        "product_item_wQqtzz",
+        "product_item_m4zwW9",
+        "product_item_tDFU7k",
+        "product_item_RWRxrQ"
+      ],
+      "name": "TSS Product Showcase",
       "settings": {
-        "product": "oats",
-        "recommendation_type": "related",
-        "layout_type": "carousel",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 57,
-        "color_scheme": "scheme-842cef9d-b3a0-4b31-9740-3fa0cd770511",
-        "padding-block-start": 48,
-        "padding-block-end": 100
+        "section_height": 400,
+        "bg_color": "#9accfc"
       }
     },
     "tss_wave_divider_MFww9j": {
@@ -832,7 +749,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_l0gfxgl0gfxgl0gf.png",
+            "image": "shopify://shop_images/Table_2.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -844,8 +761,8 @@
             "border_width": 1,
             "border_opacity": 100,
             "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-start": 22,
+            "padding-block-end": 22,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -1996,7 +1913,7 @@
     "tss_shoppable_video_carousel_KJher7",
     "tss_wave_divider_pcGkkb",
     "tss_custom_curved_heading_pDBqiQ",
-    "product_recommendations_rBiHCY",
+    "tss_product_card_GeGpMy",
     "tss_wave_divider_MFww9j",
     "section_wjnz4A",
     "marquee_BqJPd7",
