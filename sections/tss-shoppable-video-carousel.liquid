@@ -126,22 +126,52 @@
 .tss-reel-arrow.right {
   right: -10px;
 }
+.tss-reel-product {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
 
 /* MOBILE – SHOW 2 REELS */
 @media (max-width: 768px) {
+
+  .tss-reels__container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
   .tss-reels__track {
     gap: 14px;
   }
 
+  /* Perfect 2 Bigger Cards */
   .tss-reel {
-    flex: 0 0 calc(50% - 7px); /* PERFECT 2 reels */
+    flex: 0 0 calc(50% - 7px);
+  }
+
+  .tss-reel-card {
+    border-radius: 18px;
   }
 
   .tss-reel-arrow {
-    display: none;
+    display: none !important;
   }
+
+  /* Fix flex shrink for text */
+  .tss-reel-product-info {
+    min-width: 0;
+  }
+
+  .tss-reel-product-title {
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 }
+
 {% endstylesheet %}
 
 <section
@@ -175,7 +205,7 @@
                 {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
               </div>
 
-              <div class="tss-reel-product">
+              <div class="tss-reel-product" data-url="{{ block.settings.product.url }}">
                 <img src="{{ block.settings.product.featured_image | img_url: '100x100' }}">
                 
                 <div class="tss-reel-product-info">
@@ -187,11 +217,11 @@
                   </div>
                 </div>
 
-                <button 
+                <span 
                   class="tss-reel-add"
                   data-variant-id="{{ block.settings.product.selected_or_first_available_variant.id }}">
                   +
-                </button>
+                </span>
 
               </div>
 
@@ -205,6 +235,7 @@
 </section>
 <script>
 (function () {
+
   const section = document.getElementById('shopify-section-{{ section.id }}');
   if (!section) return;
 
@@ -218,8 +249,9 @@
     video.play().catch(() => {});
   });
 
+  /* ARROW VISIBILITY */
   function updateArrows() {
-    if (track.scrollWidth > track.clientWidth) {
+    if (track.scrollWidth - 5 > track.clientWidth) {
       left.style.display = 'block';
       right.style.display = 'block';
       track.style.overflowX = 'auto';
@@ -233,26 +265,44 @@
   updateArrows();
   window.addEventListener('resize', updateArrows);
 
+  /* DYNAMIC SCROLL */
+  const reel = section.querySelector('.tss-reel');
+  const scrollAmount = reel ? reel.offsetWidth + 20 : 300;
+
   left.addEventListener('click', () => {
-    track.scrollBy({ left: -320, behavior: 'smooth' });
+    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   });
 
   right.addEventListener('click', () => {
-    track.scrollBy({ left: 320, behavior: 'smooth' });
+    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   });
 
+  /* CLICK HANDLING */
   section.addEventListener('click', function (e) {
-    const btn = e.target.closest('.tss-reel-add');
-    if (!btn) return;
 
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id: btn.dataset.variantId,
-        quantity: 1
-      })
-    });
+    /* ADD TO CART */
+    const addBtn = e.target.closest('.tss-reel-add');
+    if (addBtn) {
+      e.stopPropagation();
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: addBtn.dataset.variantId,
+          quantity: 1
+        })
+      });
+
+      return;
+    }
+
+    /* GO TO PRODUCT PAGE */
+    const productBanner = e.target.closest('.tss-reel-product');
+    if (productBanner && productBanner.dataset.url) {
+      window.location.href = productBanner.dataset.url;
+    }
+
   });
 
 })();
