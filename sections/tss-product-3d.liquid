@@ -1,7 +1,10 @@
 {% style %}
 .tss-3d-hero-{{ section.id }} {
   position: relative;
-  height: 100vh;
+  height: {{ section.settings.height-controler }}px;
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.background_color }};
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -97,7 +100,6 @@
   justify-content: center;
 }
 
-/* FIXED STRETCH + TRUE CENTER */
 .tss-center img {
   max-width: 100%;
   max-height: 580px;
@@ -126,7 +128,7 @@
   transform: translateY(-3px);
 }
 
-/* Balanced 3D Animation */
+/* 3D Animation */
 @keyframes tssFloat {
   0%,100% { transform: translateY(0) rotateY(0deg); }
   50% { transform: translateY(-18px) rotateY(8deg); }
@@ -152,7 +154,6 @@
 
 <section class="tss-3d-hero-{{ section.id }}" data-hero>
 
-  <!-- Background -->
   <div class="tss-bg">
     <img 
       src="{{ section.blocks.first.settings.bg | image_url: width: 2400 }}"
@@ -162,7 +163,6 @@
     >
   </div>
 
-  <!-- Titles -->
   <div class="tss-title">
     <h1 data-heading>{{ section.blocks.first.settings.heading }}</h1>
     <h1 data-subheading>{{ section.blocks.first.settings.subheading }}</h1>
@@ -170,7 +170,6 @@
 
   <div class="tss-inner">
 
-    <!-- Left thumbs -->
     <div class="tss-side">
       {% for block in section.blocks %}
         <img
@@ -187,20 +186,17 @@
       {% endfor %}
     </div>
 
-    <!-- Center -->
     <div class="tss-center">
       <img src="{{ section.blocks.first.settings.product | image_url: width: 900 }}" data-main>
-
       <div data-btn-wrap>
         {% if section.blocks.first.settings.show_button %}
-          <a href="{{ section.blocks.first.settings.button_link }}" class="tss-btn" data-btn>
+          <a href="{{ section.blocks.first.settings.button_link }}" class="tss-btn">
             {{ section.blocks.first.settings.button_text }}
           </a>
         {% endif %}
       </div>
     </div>
 
-    <!-- Right thumbs -->
     <div class="tss-side">
       {% for block in section.blocks %}
         <img
@@ -223,6 +219,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-hero]').forEach(hero => {
+
     const main = hero.querySelector('[data-main]');
     const bg = hero.querySelector('[data-bg]');
     const h1 = hero.querySelector('[data-heading]');
@@ -231,9 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setInitialBg() {
       const isMobile = window.innerWidth <= 768;
-      const desktopBg = bg.dataset.desktopBg;
-      const mobileBg = bg.dataset.mobileBg;
-      bg.src = isMobile && mobileBg ? mobileBg : desktopBg;
+      bg.src = isMobile && bg.dataset.mobileBg
+        ? bg.dataset.mobileBg
+        : bg.dataset.desktopBg;
     }
 
     setInitialBg();
@@ -263,6 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 400);
       });
     });
+
   });
 });
 </script>
@@ -272,7 +270,35 @@ document.addEventListener('DOMContentLoaded', () => {
   "name": "TSS 3D Showcase",
   "settings": [
     { "type": "checkbox", "id": "enable_overlay", "label": "Enable Background Overlay", "default": true },
-    { "type": "range", "id": "overlay_opacity", "label": "Overlay Opacity", "min": 0, "max": 90, "step": 5, "default": 40 }
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay Opacity", "min": 0, "max": 90, "step": 5, "default": 40 },
+    {"type": "color", "id": "background_color", "label": "Background Color", "default": "#000000"},
+    {
+  "type": "range",
+  "id": "height-controler",
+  "label": "Height Control",
+  "min": 300,
+  "max": 800,
+  "step": 10,
+  "default": 580
+},
+{
+  "type": "range",
+  "id": "padding_top",
+  "label": "Padding Top",
+  "min": 0,
+  "max": 200,
+  "step": 5,
+  "default": 60
+},
+{
+  "type": "range",
+  "id": "padding_bottom",
+  "label": "Padding Bottom",
+  "min": 0,
+  "max": 200,
+  "step": 5,
+  "default": 60
+}
   ],
   "blocks": [
     {
@@ -286,7 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { "type": "image_picker", "id": "mobile_bg", "label": "Mobile Background Image" },
         { "type": "checkbox", "id": "show_button", "label": "Show Buy Now Button", "default": true },
         { "type": "text", "id": "button_text", "label": "Button Text", "default": "Buy Now" },
-        { "type": "url", "id": "button_link", "label": "Button Link" }
+        { "type": "url", "id": "button_link", "label": "Button Link" },
+       
       ]
     }
   ],

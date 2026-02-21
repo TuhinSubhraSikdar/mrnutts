@@ -9,19 +9,6 @@
  */
 {
   "sections": {
-    "tss_blur_dwdpGG": {
-      "type": "tss-blur",
-      "name": "TSS Header Blur",
-      "settings": {
-        "blur_height": 40,
-        "blur_strength": 30,
-        "top_color": "#ffffff",
-        "bottom_color": "#000000",
-        "enable_glass": true,
-        "pattern": "lines",
-        "full_width": true
-      }
-    },
     "slideshow_NPDYrF": {
       "type": "slideshow",
       "blocks": {
@@ -30,7 +17,7 @@
           "name": "t:names.slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/website-banner-5.jpg",
+            "image_1": "shopify://shop_images/Banner_4_1.jpg",
             "image_1_mobile": "shopify://shop_images/WhatsApp-Image-2025-09-25-at-16.54.40_c0e98707.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -38,11 +25,11 @@
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "flex-end",
             "gap": 12,
             "inherit_color_scheme": false,
             "color_scheme": "scheme-6",
-            "toggle_overlay": true,
+            "toggle_overlay": false,
             "overlay_color": "#00000078",
             "overlay_style": "solid",
             "gradient_direction": "to bottom",
@@ -81,7 +68,7 @@
             "text_9HCCbX": {
               "type": "text",
               "settings": {
-                "text": "<p>Introducing our latest products, made especially for the season. Shop your favorites before they're gone!</p>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -128,7 +115,7 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/makhana-4.jpg",
+            "image_1": "shopify://shop_images/image_20.png",
             "image_1_mobile": "shopify://shop_images/foxnutts-basket-1.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -140,7 +127,7 @@
             "gap": 12,
             "inherit_color_scheme": false,
             "color_scheme": "scheme-6",
-            "toggle_overlay": true,
+            "toggle_overlay": false,
             "overlay_color": "#00000078",
             "overlay_style": "solid",
             "gradient_direction": "to top",
@@ -234,11 +221,11 @@
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-end",
             "gap": 12,
             "inherit_color_scheme": false,
             "color_scheme": "scheme-6",
-            "toggle_overlay": true,
+            "toggle_overlay": false,
             "overlay_color": "#00000078",
             "overlay_style": "solid",
             "gradient_direction": "to top",
@@ -252,7 +239,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Bestsellers</h2>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -277,7 +264,7 @@
             "text_t8pXip": {
               "type": "text",
               "settings": {
-                "text": "<p>Discover the bestsellers that have captured the hearts of our customers with their perfect blend of functionality and style.</p>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -333,7 +320,7 @@
         "full_frame_on_mobile": false,
         "slideshow_gap": 12,
         "corner_radius": 0,
-        "slide_height": "medium",
+        "slide_height": "large",
         "content_position": "on-media",
         "color_scheme": "",
         "icons_style": "arrows_large",
@@ -413,11 +400,18 @@
     "tss_shoppable_video_carousel_KJher7": {
       "type": "tss-shoppable-video-carousel",
       "blocks": {
-        "reel_7jyzNe": {
+        "reel_KzpnQD": {
           "type": "reel",
           "settings": {
-            "video": "shopify://files/videos/Started in 2025 with belief.Paused, learned, evolved.Back in 2026 with bigger vision & stronger _c2bcbb6a-3562-428b-8843-18f02ecbe295.mp4",
-            "product": "high-protein-dark-chocolate-oats-400"
+            "video": "shopify://files/videos/SnapInsta.to_AQNM2Sn6KVkjLSQ-jlYSNNWuE6QwDnCKf2BV98PUn7HfRa6j8RZ6iefMnCxDwhuna2KKsdyrhw9g52HeYX47uMUaajnxP23MLymogd8.mp4",
+            "product": "peanut-butter-dark-chocolate-crunchy"
+          }
+        },
+        "reel_yAexch": {
+          "type": "reel",
+          "settings": {
+            "video": "shopify://files/videos/IMG_8383.MP4",
+            "product": "peanut-butter-dark-chocolate-crunchy"
           }
         },
         "reel_DqJTJf": {
@@ -432,6 +426,13 @@
           "settings": {
             "video": "shopify://files/videos/Get ready to go nuts for flavor! 🥜🍪 ‘MR NUTTS’ Peanut Butter Cookie Crunch is the perfect blen.mp4",
             "product": "peanut-butter-cookie-crunch-500-gm"
+          }
+        },
+        "reel_eP7Ljy": {
+          "type": "reel",
+          "settings": {
+            "video": "shopify://files/videos/WhatsApp Video 2026-02-19 at 4.26.51 PM.mp4",
+            "product": "high-protein-dark-chocolate-oats-400"
           }
         },
         "reel_7TTkDh": {
@@ -450,9 +451,11 @@
         }
       },
       "block_order": [
-        "reel_7jyzNe",
+        "reel_KzpnQD",
+        "reel_yAexch",
         "reel_DqJTJf",
         "reel_kLhwcg",
+        "reel_eP7Ljy",
         "reel_7TTkDh",
         "reel_yAFxJr"
       ],
@@ -525,42 +528,42 @@
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-dark-chocolate-smooth",
-            "custom_reviews": ""
+            "custom_reviews": "⭐⭐⭐⭐⭐(10 reviews)"
           }
         },
         "product_item_EiHCEB": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-mango-with-chia-seeds",
-            "custom_reviews": "★★★★★ (126 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (126 reviews)"
           }
         },
         "product_item_wQqtzz": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-natural-crunchy",
-            "custom_reviews": "★★★★★ (16 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (16 reviews)"
           }
         },
         "product_item_m4zwW9": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-dark-chocolate-crunchy",
-            "custom_reviews": ""
+            "custom_reviews": "⭐⭐⭐⭐⭐ (25 reviews)"
           }
         },
         "product_item_tDFU7k": {
           "type": "product_item",
           "settings": {
             "product": "high-protein-dark-chocolate-oats-400",
-            "custom_reviews": "★★★★★ (2 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (2 reviews)"
           }
         },
         "product_item_RWRxrQ": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-cookie-crunch-500-gm",
-            "custom_reviews": "★★★★★ (12 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (12 reviews)"
           }
         }
       },
@@ -1906,7 +1909,6 @@
     }
   },
   "order": [
-    "tss_blur_dwdpGG",
     "slideshow_NPDYrF",
     "tss_shop_by_category_rings_3jAtKC",
     "tss_wave_divider_6WxWGT",
