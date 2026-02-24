@@ -32,6 +32,12 @@
             "type": "text",
             "id": "custom_reviews",
             "label": "Custom Reviews (optional)"
+          },
+          {
+          "type": "text",
+          "id": "product-lable",
+          "label": "Lable (optional)",
+          "default": "Best Seller"
           }
       ]
     }
@@ -85,14 +91,16 @@
             ★★★★★ <span>(No reviews)</span>
           </div>
         {% endif %}
-
+        <div class="tss-product-lable">
+          {{ block.settings.product-lable }}
+        </div>
         <!-- Price -->
         <div class="tss-price">
           {{ product.price | money }}
         </div>
 
         <!-- Redirect Button -->
-        <a href="{{ product.url }}" class="tss-btn">
+        <a href="{{ product.url }}" class="tss-btn" style="background-color: #0f4d2e;">
           ADD TO CART
         </a>
 
@@ -106,6 +114,7 @@
 </section>
 
 <style>
+
 .tss-showcase {
   position: relative;
   padding: 80px 0;
@@ -144,11 +153,12 @@
 .tss-img img:hover {
   transform: scale(1.05);
 }
+
 .tss-product-title {
   font-weight: 700;
   font-size: 15px;
   text-transform: uppercase;
-  margin-bottom: 8px;;
+  margin-bottom: 8px;
 }
 
 .tss-title {
@@ -171,7 +181,7 @@
 
 .tss-btn {
   display: inline-block;
-  background: #000;
+  background: #0f4d2e;
   color: #fff;
   padding: 12px 32px;
   border-radius: 30px;
@@ -181,7 +191,7 @@
 }
 
 .tss-btn:hover {
-  background: #222;
+  background: #187748;
 }
 
 /* Navigation */
@@ -207,7 +217,7 @@
   .tss-wrapper {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 30px;
+    gap: 20px; /* slightly tighter spacing */
     padding: 0 20px;
   }
 
@@ -219,6 +229,63 @@
   .tss-nav {
     display: none;
   }
+}
+
+/* 🔴 SUPER SAVER LABEL */
+
+.tss-product-lable {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #e00000;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* ⚡ Lightning Auto Effect */
+.tss-product-lable::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.75),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: lightningSwipe 2s linear infinite;
+}
+
+/* Lightning Animation */
+@keyframes lightningSwipe {
+  0% {
+    left: -100%;
+  }
+  35% {
+    left: 130%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+
+/* Hover enhancement */
+.tss-product-lable:hover {
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.7);
+  transform: translateY(-2px);
 }
 
 </style>

@@ -3,20 +3,24 @@
   padding: 60px 20px;
   background: {{ section.settings.section_bg }};
   overflow: hidden;
+  position: relative;
 }
 
+/* Track */
 .rotating-logos-{{ section.id }} .logos-track {
   display: flex;
-  width: max-content;
+  width: fit-content;
   animation: slideLogos {{ section.settings.rotate_duration }}s linear infinite;
+  will-change: transform;
 }
 
+/* Wrapper */
 .rotating-logos-{{ section.id }} .logos-wrapper {
   display: flex;
   gap: 40px;
 }
 
-/* Logo card */
+/* IMPORTANT: prevent shrink */
 .rotating-logos-{{ section.id }} .logo-item {
   width: {{ section.settings.logo_width }}px;
   height: {{ section.settings.logo_height }}px;
@@ -25,30 +29,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+/* Image */
 .rotating-logos-{{ section.id }} img {
   max-width: 80%;
   max-height: 80%;
+  object-fit: contain;
 }
 
-/* Hover effect */
+/* Hover */
 .rotating-logos-{{ section.id }} .logo-item:hover {
   transform: scale(1.08);
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
-/* Pause slider on hover */
+/* Pause on hover */
 .rotating-logos-{{ section.id }}:hover .logos-track {
   animation-play-state: paused;
 }
 
+/* PERFECT LOOP */
 @keyframes slideLogos {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
+  100% {
     transform: translateX(-50%);
   }
 }
@@ -56,7 +64,6 @@
 
 <div class="rotating-logos-{{ section.id }}">
   <div class="logos-track">
-    <!-- First set -->
     <div class="logos-wrapper">
       {% for block in section.blocks %}
         <a
@@ -74,10 +81,12 @@
           {% endif %}
         </a>
       {% endfor %}
-    </div>
 
-    <!-- Duplicate set for seamless loop -->
-    <div class="logos-wrapper">
+      {%- comment -%}
+      Duplicate SAME logos inside SAME wrapper
+      This guarantees exact width match
+      {%- endcomment -%}
+
       {% for block in section.blocks %}
         <a
           href="{{ block.settings.logo_link }}"

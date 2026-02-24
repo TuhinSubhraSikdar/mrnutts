@@ -18,7 +18,7 @@
           "settings": {
             "media_type_1": "image",
             "image_1": "shopify://shop_images/Banner_4_1.jpg",
-            "image_1_mobile": "shopify://shop_images/WhatsApp-Image-2025-09-25-at-16.54.40_c0e98707.jpg",
+            "image_1_mobile": "shopify://shop_images/Banner_4_mobile__jpg.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -34,7 +34,7 @@
             "overlay_style": "solid",
             "gradient_direction": "to bottom",
             "padding-block-start": 36,
-            "padding-block-end": 40,
+            "padding-block-end": 69,
             "padding-inline-start": 48,
             "padding-inline-end": 48
           },
@@ -43,7 +43,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>New arrivals</p>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -141,7 +141,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>New arrivals</h2>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -166,7 +166,7 @@
             "text_bkURyc": {
               "type": "text",
               "settings": {
-                "text": "<p>Introducing our latest products, made especially for the season. Shop your favorites before they're gone!</p>",
+                "text": "",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -335,22 +335,22 @@
     "tss_shop_by_category_rings_3jAtKC": {
       "type": "tss-shop-by-category-rings",
       "blocks": {
-        "category_KnPCQU": {
+        "category_Hjhnah": {
           "type": "category",
           "settings": {
-            "collection": "oats"
-          }
-        },
-        "category_VqcJKQ": {
-          "type": "category",
-          "settings": {
-            "collection": "peanut-butter"
+            "collection": "best-seller"
           }
         },
         "category_3kmQcc": {
           "type": "category",
           "settings": {
             "collection": "peanut-butter"
+          }
+        },
+        "category_KnPCQU": {
+          "type": "category",
+          "settings": {
+            "collection": "oats"
           }
         },
         "category_pjhRgX": {
@@ -361,9 +361,9 @@
         }
       },
       "block_order": [
-        "category_KnPCQU",
-        "category_VqcJKQ",
+        "category_Hjhnah",
         "category_3kmQcc",
+        "category_KnPCQU",
         "category_pjhRgX"
       ],
       "name": "TSS – Category Rings",
@@ -510,66 +510,56 @@
     "tss_product_card_GeGpMy": {
       "type": "tss-product-card",
       "blocks": {
-        "product_item_mqWDac": {
-          "type": "product_item",
-          "settings": {
-            "product": "",
-            "custom_reviews": ""
-          }
-        },
-        "product_item_3dBLig": {
-          "type": "product_item",
-          "settings": {
-            "product": "",
-            "custom_reviews": ""
-          }
-        },
         "product_item_kze7ff": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-dark-chocolate-smooth",
-            "custom_reviews": "⭐⭐⭐⭐⭐(10 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐(10 reviews)",
+            "product-lable": "Super Saver"
           }
         },
         "product_item_EiHCEB": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-mango-with-chia-seeds",
-            "custom_reviews": "⭐⭐⭐⭐⭐ (126 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (126 reviews)",
+            "product-lable": "Super Saver"
           }
         },
         "product_item_wQqtzz": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-natural-crunchy",
-            "custom_reviews": "⭐⭐⭐⭐⭐ (16 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (16 reviews)",
+            "product-lable": "Super Saver"
           }
         },
         "product_item_m4zwW9": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-dark-chocolate-crunchy",
-            "custom_reviews": "⭐⭐⭐⭐⭐ (25 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (25 reviews)",
+            "product-lable": "Super Saver"
           }
         },
         "product_item_tDFU7k": {
           "type": "product_item",
           "settings": {
             "product": "high-protein-dark-chocolate-oats-400",
-            "custom_reviews": "⭐⭐⭐⭐⭐ (2 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (2 reviews)",
+            "product-lable": "Super Saver"
           }
         },
         "product_item_RWRxrQ": {
           "type": "product_item",
           "settings": {
             "product": "peanut-butter-cookie-crunch-500-gm",
-            "custom_reviews": "⭐⭐⭐⭐⭐ (12 reviews)"
+            "custom_reviews": "⭐⭐⭐⭐⭐ (12 reviews)",
+            "product-lable": "Super Saver"
           }
         }
       },
       "block_order": [
-        "product_item_mqWDac",
-        "product_item_3dBLig",
         "product_item_kze7ff",
         "product_item_EiHCEB",
         "product_item_wQqtzz",
@@ -752,7 +742,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "shopify://shop_images/Table_2.png",
+            "image": "shopify://shop_images/Table_1_144e5c06-02fe-4586-bfa2-f89c3120a206.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -944,25 +934,37 @@
     "tss_product_3d_CKdexx": {
       "type": "tss-product-3d",
       "blocks": {
+        "product_AGJrmr": {
+          "type": "product",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "product": "shopify://shop_images/mrokay.png",
+            "bg": "shopify://shop_images/Mango.png",
+            "show_button": true,
+            "button_text": "Buy Now",
+            "button_link": "shopify://products/peanut-butter-mango-with-chia-seeds"
+          }
+        },
         "product_qyarGP": {
           "type": "product",
           "settings": {
-            "heading": "Peanut Butter",
-            "subheading": "Cookie Crunch",
+            "heading": "",
+            "subheading": "",
             "product": "shopify://shop_images/IMG_9950-removebg-preview.png",
-            "bg": "shopify://shop_images/dark-chocolate-oats-4.jpg",
+            "bg": "shopify://shop_images/Cookie_Crunch.png",
             "show_button": true,
             "button_text": "Buy Now",
-            "button_link": "shopify://products/peanut-butter-cookie-crunch"
+            "button_link": "shopify://products/peanut-butter-cookie-crunch-500-gm"
           }
         },
         "product_MjajhL": {
           "type": "product",
           "settings": {
-            "heading": "Peanut Butter",
-            "subheading": "Natural Smooth",
+            "heading": "",
+            "subheading": "",
             "product": "shopify://shop_images/1_1-removebg-preview.png",
-            "bg": "shopify://shop_images/makhana-4.jpg",
+            "bg": "shopify://shop_images/Natural.png",
             "show_button": true,
             "button_text": "Buy Now",
             "button_link": "shopify://products/peanut-butter-natural-crunchy"
@@ -971,10 +973,10 @@
         "product_iQDqFE": {
           "type": "product",
           "settings": {
-            "heading": "Peanut Butter",
-            "subheading": "Dark Chocolate Crunchy",
+            "heading": "",
+            "subheading": "",
             "product": "shopify://shop_images/1-removebg-preview.png",
-            "bg": "shopify://shop_images/foxnutts-basket-1.jpg",
+            "bg": "shopify://shop_images/Dark.png",
             "show_button": true,
             "button_text": "Buy Now",
             "button_link": "shopify://products/peanut-butter-dark-chocolate-crunchy"
@@ -982,14 +984,19 @@
         }
       },
       "block_order": [
+        "product_AGJrmr",
         "product_qyarGP",
         "product_MjajhL",
         "product_iQDqFE"
       ],
       "name": "TSS 3D Product Showcase",
       "settings": {
-        "enable_overlay": true,
-        "overlay_opacity": 35
+        "enable_overlay": false,
+        "overlay_opacity": 35,
+        "background_color": "#ffffff",
+        "height-controler": 780,
+        "padding_top": 25,
+        "padding_bottom": 100
       }
     },
     "tss_custom_curved_heading_gkcHhk": {
@@ -1738,15 +1745,15 @@
         "logo_UipCCD": {
           "type": "logo",
           "settings": {
-            "logo_image": "shopify://shop_images/myntra_0cbef11a-0b45-444f-a136-91eea5c33c46.svg",
-            "logo_link": ""
+            "logo_image": "shopify://shop_images/JioMart_logo.svg",
+            "logo_link": "https://jiomart.com/groceries/b/mr-nutts/217718?"
           }
         },
         "logo_Jq4RmJ": {
           "type": "logo",
           "settings": {
             "logo_image": "shopify://shop_images/flipkart.svg",
-            "logo_link": ""
+            "logo_link": "https://www.flipkart.com/mr-nutts-high-protein-oats-dark-chocolate-mix-nuts-added-almonds-super-seeds-pouch/p/itm9f335eeca66da?pid=CAFHEC7BRRFQCRWJ&lid=LSTCAFHEC7BRRFQCRWJO20UXQ&marketplace=FLIPKART&q=mr+nutts+oats&store=eat%2Fcpy&srno=s_1_1&otracker=AS_QueryStore_OrganicAutoSuggest_1_9_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_1_9_na_na_na&fm=search-autosuggest&iid=973beeaf-3f58-44cd-96e9-28dbb50b03e1.CAFHEC7BRRFQCRWJ.SEARCH&ppt=sp&ppn=sp&ssid=wvqkzwmpk00000001771917306016&qH=70ae3c3fa6eb36b4&ov_redirect=true&ov_redirect=true"
           }
         }
       },
@@ -1762,149 +1769,6 @@
         "logo_width": 140,
         "logo_height": 140,
         "rotate_duration": 20
-      }
-    },
-    "featured_blog_posts_YRNtTR": {
-      "type": "featured-blog-posts",
-      "blocks": {
-        "static-blog-title": {
-          "type": "_featured-blog-posts-title",
-          "name": "t:names.title",
-          "static": true,
-          "settings": {
-            "text": "<h3>{{ closest.blog.title }}</h3>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "static-blog-post-card": {
-          "type": "_featured-blog-posts-card",
-          "name": "t:names.blog_card",
-          "static": true,
-          "settings": {
-            "alignment": "left",
-            "gap": 8,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "image": {
-              "type": "_featured-blog-posts-image",
-              "static": true,
-              "settings": {
-                "image_ratio": "square",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0
-              },
-              "blocks": {}
-            },
-            "title": {
-              "type": "_heading",
-              "name": "t:names.title",
-              "static": true,
-              "settings": {
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "text": "<h4>{{ closest.article.title }}</h4>",
-                "read_only": false,
-                "alignment": "left",
-                "show_alignment": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "blog-post-info-text": {
-              "type": "_blog-post-info-text",
-              "name": "t:names.details",
-              "static": true,
-              "settings": {
-                "show_date": true,
-                "show_author": true,
-                "type_preset": "",
-                "alignment": "left",
-                "show_alignment": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
-            "blog-post-description": {
-              "type": "_blog-post-description",
-              "name": "t:names.excerpt",
-              "disabled": true,
-              "static": true,
-              "settings": {
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 8,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "name": "t:names.blog_posts_carousel",
-      "settings": {
-        "blog": "news",
-        "layout_type": "carousel",
-        "carousel_on_mobile": true,
-        "post_limit": 5,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "44cqw",
-        "columns_gap": 50,
-        "rows_gap": 16,
-        "icons_style": "chevron",
-        "icons_shape": "circle",
-        "section_width": "page-width",
-        "gap": 12,
-        "color_scheme": "scheme-3",
-        "padding-block-start": 0,
-        "padding-block-end": 0
       }
     }
   },
@@ -1924,7 +1788,6 @@
     "section_TfHpRK",
     "tss_custom_testimonials_YRHw3r",
     "section_chwwfF",
-    "tss_rotating_marketplace_logos_qQEVVf",
-    "featured_blog_posts_YRNtTR"
+    "tss_rotating_marketplace_logos_qQEVVf"
   ]
 }

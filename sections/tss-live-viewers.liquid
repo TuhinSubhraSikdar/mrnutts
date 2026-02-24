@@ -38,11 +38,19 @@ Updated 2026
   animation: tss-blink 4s infinite;
   transform-origin: center;
 }
-
+.tss-live-eye-emoji {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: tss-blink-emoji 4s infinite;
+  transform-origin: center;
+}
 /* Blink Animation */
-@keyframes tss-blink {
+@keyframes tss-blink-emoji {
   0%, 92%, 100% { transform: scaleY(1); }
-  95% { transform: scaleY(0.1); }
+  95% { transform: scaleY(0.15); }
 }
 {% endstylesheet %}
 
@@ -62,11 +70,7 @@ Updated 2026
         {{ block.shopify_attributes }}
       >
         <!-- 👁 Blinking Eye -->
-        <span class="tss-live-eye">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-          </svg>
-        </span>
+        <span class="tss-live-eye-emoji">👁️</span>
 
         <span>
           <span id="tss-live-number-{{ block.id }}"></span>
