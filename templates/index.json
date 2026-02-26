@@ -116,7 +116,7 @@
           "settings": {
             "media_type_1": "image",
             "image_1": "shopify://shop_images/image_20.png",
-            "image_1_mobile": "shopify://shop_images/foxnutts-basket-1.jpg",
+            "image_1_mobile": "shopify://shop_images/Banner_5_mobile__jpg_db9b0fdf-342a-425c-8afe-286e08fde9ec.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -941,6 +941,7 @@
             "subheading": "",
             "product": "shopify://shop_images/mrokay.png",
             "bg": "shopify://shop_images/Mango.png",
+            "mobile_bg": "shopify://shop_images/mango_phone.png",
             "show_button": true,
             "button_text": "Buy Now",
             "button_link": "shopify://products/peanut-butter-mango-with-chia-seeds"
@@ -953,6 +954,7 @@
             "subheading": "",
             "product": "shopify://shop_images/IMG_9950-removebg-preview.png",
             "bg": "shopify://shop_images/Cookie_Crunch.png",
+            "mobile_bg": "shopify://shop_images/cookie_crunch_phone.png",
             "show_button": true,
             "button_text": "Buy Now",
             "button_link": "shopify://products/peanut-butter-cookie-crunch-500-gm"
@@ -965,6 +967,7 @@
             "subheading": "",
             "product": "shopify://shop_images/1_1-removebg-preview.png",
             "bg": "shopify://shop_images/Natural.png",
+            "mobile_bg": "shopify://shop_images/natural_phone.png",
             "show_button": true,
             "button_text": "Buy Now",
             "button_link": "shopify://products/peanut-butter-natural-crunchy"
@@ -976,7 +979,8 @@
             "heading": "",
             "subheading": "",
             "product": "shopify://shop_images/1-removebg-preview.png",
-            "bg": "shopify://shop_images/Dark.png",
+            "bg": "shopify://shop_images/Dark_1_07f1e4bb-e18a-4009-a02b-7a1d434192a4.png",
+            "mobile_bg": "shopify://shop_images/Banner_5_mobile__jpg_db9b0fdf-342a-425c-8afe-286e08fde9ec.jpg",
             "show_button": true,
             "button_text": "Buy Now",
             "button_link": "shopify://products/peanut-butter-dark-chocolate-crunchy"

@@ -477,6 +477,43 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "icon_4XraNK": {
+                  "type": "icon",
+                  "name": "t:names.icon",
+                  "settings": {
+                    "icon": "whatsapp",
+                    "width": 24,
+                    "link": "tel:+91 86970 04276",
+                    "open_in_new_tab": false
+                  },
+                  "blocks": {}
+                },
+                "text_C7LTN9": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p><a href=\"https://wa.link/w0r9l3\" title=\"https://wa.link/w0r9l3\">‎‪+91 86970 04276</a></p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
                 "icon_zC4kCx": {
                   "type": "icon",
                   "name": "t:names.icon",
@@ -492,7 +529,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p><a href=\"tel:+918697004276\" target=\"_blank\"><strong>+918697004276</strong></a></p>",
+                    "text": "<p><a href=\"tel:+91 86970 04276\" title=\"tel:+91 86970 04276\">tel:+91 86970 04276</a></p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -516,6 +553,8 @@
                 }
               },
               "block_order": [
+                "icon_4XraNK",
+                "text_C7LTN9",
                 "icon_zC4kCx",
                 "text_UhymLA"
               ]
