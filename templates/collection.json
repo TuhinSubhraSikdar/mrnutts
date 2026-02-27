@@ -105,7 +105,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "{{ closest.collection.metafields.custom.collection_page_banner.value }}",
+            "image": "shopify://shop_images/Banner_6_jpg.jpg",
             "link": "",
             "image_ratio": "landscape",
             "width": "fill",
