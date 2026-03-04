@@ -12,7 +12,7 @@
     "logo": "shopify://shop_images/logo_1.png",
     "logo_height": 36,
     "logo_height_mobile": 28,
-    "favicon": "shopify://shop_images/fav_icon_9411e6a3-8cd6-4544-8b2a-50ae910a1724.png",
+    "favicon": "shopify://shop_images/fav-removebg-preview.png",
     "type_body_font": "acme_n4",
     "type_subheading_font": "inter_n5",
     "type_heading_font": "acme_n4",
@@ -46,6 +46,7 @@
     "page_width": "narrow",
     "page_transition_enabled": true,
     "transition_to_main_product": false,
+    "add_to_cart_animation": true,
     "card_hover_effect": "lift",
     "badge_position": "top-right",
     "badge_corner_radius": 100,
@@ -53,14 +54,20 @@
     "badge_sold_out_color_scheme": "scheme-3",
     "badge_text_transform": "none",
     "primary_button_border_width": 0,
-    "button_border_radius_primary": 14,
-    "secondary_button_border_width": 1,
-    "button_border_radius_secondary": 14,
+    "button_border_radius_primary": 100,
+    "type_font_button_primary": "accent",
+    "button_text_case_primary": "uppercase",
+    "secondary_button_border_width": 0,
+    "button_border_radius_secondary": 100,
+    "type_font_button_secondary": "accent",
+    "pills_border_radius": 39,
     "cart_type": "drawer",
     "cart_price_font": "secondary",
     "auto_open_cart_drawer": true,
     "show_cart_note": false,
     "show_add_discount_code": true,
+    "cart_thumbnail_border": "solid",
+    "cart_thumbnail_border_opacity": 74,
     "drawer_drop_shadow": true,
     "icon_stroke": "default",
     "input_border_width": 1,
@@ -88,11 +95,28 @@
       },
       "12108174171315376258": {
         "type": "shopify://apps/aov-ai-cart-drawer/blocks/avada-embed/938869e1-3feb-48fa-ab79-27fdfe609836",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       },
       "14041968213898805026": {
         "type": "shopify://apps/aov-ai-free-gift-bxgy/blocks/app-embed-free-gift/de98edfe-90fa-4145-8a57-1055e0058723",
+        "disabled": true,
+        "settings": {}
+      },
+      "6544682535036668446": {
+        "type": "shopify://apps/pumper-bundles/blocks/app-embed/0856870d-2aca-4b1e-a662-cf1797f61270",
+        "disabled": false,
+        "settings": {}
+      },
+      "12713281477849310781": {
+        "type": "shopify://apps/flexycart/blocks/app-embed/019ad9d4-f63d-7fe8-a165-f2f47be7c853",
+        "disabled": false,
+        "settings": {
+          "flexy_cart_count_classname": "cart-count-bubble"
+        }
+      },
+      "13017476918150166000": {
+        "type": "shopify://apps/wa-chat-button/blocks/whatsapp/f4d01795-3d1a-4ac7-bca7-9d0d178df50e",
         "disabled": false,
         "settings": {}
       }
@@ -178,14 +202,14 @@
       },
       "scheme-3": {
         "settings": {
-          "background": "#ffefeb",
+          "background": "#ffffffc7",
           "foreground_heading": "#000000",
-          "foreground": "#000000",
-          "primary": "#1c6b2a",
+          "foreground": "#497200",
+          "primary": "#000000",
           "primary_hover": "#1d3686b8",
           "border": "#000000cf",
           "shadow": "#000000",
-          "primary_button_background": "#1c6b2a",
+          "primary_button_background": "#025a02",
           "primary_button_text": "#ffffff",
           "primary_button_border": "#000000",
           "primary_button_hover_background": "#1d368680",
